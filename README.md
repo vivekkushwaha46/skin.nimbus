@@ -51,27 +51,18 @@ Open `addon.xml` and change the `version` attribute:
 
 The ZIP must contain a single root folder named `skin.nimbus` (matching the addon ID). From the **parent** directory of your clone:
 
-#### macOS / Linux
+#### Automated Script (macOS / Linux)
+I have created a helper script to do this automatically with the correct structure:
 
+1. Open your terminal in the `skin.nimbus` folder.
+2. Run: `chmod +x package.sh && ./package.sh`
+3. This creates a ready-to-install `skin.nimbus.zip` in your current folder.
+
+#### Manual (macOS / Linux)
+If you prefer doing it manually from the **parent** directory of your clone:
 ```bash
 cd /Users/imvivek/work   # parent of skin.nimbus
-
-zip -r skin.nimbus.zip skin.nimbus/ \
-  -x "skin.nimbus/.git/*" \
-  -x "skin.nimbus/.gitignore" \
-  -x "skin.nimbus/.DS_Store" \
-  -x "skin.nimbus/._*" \
-  -x "skin.nimbus/Makefile" \
-  -x "skin.nimbus/extras/*"
-```
-
-#### Windows (PowerShell)
-
-```powershell
-# From the parent directory of skin.nimbus
-Compress-Archive -Path .\skin.nimbus\* -DestinationPath .\skin.nimbus.zip
-# Note: This puts files at root; Kodi needs them inside a skin.nimbus/ folder.
-# Recommended: use 7-Zip or the Linux/macOS command via WSL instead.
+zip -r skin.nimbus.zip skin.nimbus/ -x "skin.nimbus/.git/*" -x "skin.nimbus/.gitignore" ...
 ```
 
 ### Step 3 — Verify the ZIP Structure
@@ -120,19 +111,24 @@ If `addon.xml` is at the ZIP root instead of inside `skin.nimbus/`, Kodi will fa
 
 This method lets you point Kodi directly at your GitHub repository so you can re-download updated ZIPs without manually transferring files each time.
 
-1. **Create a GitHub Release:**
-   - On GitHub, go to your repo → **Releases** → **Create a new release**.
-   - Tag it (e.g., `v1.0.0`), give it a title, and **attach the `skin.nimbus.zip`** file as a release asset.
-   - Publish the release.
+1. **Create the GitHub Release (Required for this link to work):**
+   - On GitHub, go to your repository.
+   - Click **Releases** → **Create a new release** (on the right sidebar).
+   - Tag it (e.g., `v1.0.0`), give it a title.
+   - **Attach the `skin.nimbus.zip`** you created locally into the assets box.
+   - Click **Publish release**.
 
 2. **Add the source in Kodi's File Manager:**
    - Open Kodi → **Settings** → **File Manager** → **Add Source**
    - Enter this URL as the source:
      ```
-     https://github.com/vivekkushwaha46/skin.nimbus/releases/latest/download/
+     https://github.com/vivekkushwaha46/skin.nimbus/releases/latest/download/skin.nimbus.zip
      ```
-   - Name it something memorable, e.g., `Nimbus Optimized`.
+   - Name it `Nimbus Lite`.
    - Select **OK**.
+
+> [!IMPORTANT]
+> The link above will **404** until you have published at least one **Release** on GitHub with a ZIP asset.
 
 3. **Install from the source:**
    - Go to **Settings** → **Add-ons** → **Install from zip file**.
@@ -156,7 +152,43 @@ adb push skin.nimbus.zip /sdcard/Download/
 # Then install via Kodi UI as described in Method 1, Step 3
 ```
 
+
+### Method 4 — GitHub Pages Hosting (Professional Repository Style)
+
+This method creates a **Repository URL** that you can add as a "File Source" in Kodi. It will show a "Directory Listing" for your ZIP files, just like the original Nimbus repository.
+
+#### Step 1 — Generate the Repository Folder
+I have provided an automation script `update_repo.py` that prepares everything for GitHub Pages.
+
+1. Open your terminal in the `skin.nimbus` folder.
+2. Run: `python3 update_repo.py`
+3. This creates a `repo/` directory containing:
+   - `index.html` (The directory listing look)
+   - `addons.xml` (Kodi's index of your repo)
+   - `skin.nimbus/index.html` (Specific folder listing)
+   - `skin.nimbus/skin.nimbus-1.0.0.zip` (The packaged skin)
+
+#### Step 2 — Enable GitHub Pages
+1. Push your changes to GitHub:
+   ```bash
+   git add repo/ update_repo.py
+   git commit -m "Add repo hosting"
+   git push
+   ```
+2. On GitHub, go to your repository **Settings**.
+3. Select **Pages** from the left sidebar.
+4. Under **Build and deployment**, set the source to **Deploy from a branch**.
+5. Select your branch (e.g., `main`) and the folder **`/(root)`**.
+6. Click **Save**. GitHub will give you a URL like: `https://vivekkushwaha46.github.io/skin.nimbus/repo/`
+
+#### Step 3 — Add to Kodi
+1. In Kodi, go to **Settings** → **File Manager** → **Add source**.
+2. Enter your GitHub Pages URL (e.g., `https://vivekkushwaha46.github.io/skin.nimbus/repo/`).
+3. Name it `Nimbus Repo`.
+4. Install via **Settings → Add-ons → Install from zip file → Nimbus Repo** → browse and select the ZIP.
+
 ---
+
 
 ## Reverting to the Original Skin
 
