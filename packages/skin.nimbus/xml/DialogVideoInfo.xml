@@ -49,7 +49,7 @@
         <aspectratio>stretch</aspectratio>
         <fadetime>200</fadetime>
         <animation effect="fade" time="400">VisibleChange</animation>
-        <texture background="true" colordiffuse="FF333333">$INFO[ListItem.Art(fanart)]</texture>
+        <texture background="true" colordiffuse="FF333333" unload="true">$INFO[ListItem.Art(fanart)]</texture>
         <visible>!Skin.HasSetting(Enable.BackgroundBlur)</visible>
       </control>
       <!-- <control type="image">
@@ -112,7 +112,7 @@
           <bottom>0</bottom>
           <right>120.5</right>
           <aspectratio scalediffuse="false">scale</aspectratio>
-          <texture diffuse="masks/poster-big.png" colordiffuse="artwork_dim">$VAR[FlixPosterVar]</texture>
+          <texture diffuse="masks/poster-big.png" colordiffuse="artwork_dim" unload="true">$VAR[FlixPosterVar]</texture>
           <bordersize>1</bordersize>
           <bordertexture colordiffuse="FF5B5B5B" border="20" infill="false">masks/poster-big-border.png</bordertexture>
           <visible>!String.IsEqual(Container(20000).ListItem.Property(id),cast)</visible>
@@ -136,7 +136,7 @@
             <control type="image">
               <!-- <width>780</width> -->
               <height>233</height>
-              <texture colordiffuse="artwork_dim" background="true">$VAR[ClearlogoVar]</texture>
+              <texture colordiffuse="artwork_dim" background="true" unload="true">$VAR[ClearlogoVar]</texture>
               <aspectratio align="center">keep</aspectratio>
               <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) + Skin.HasSetting(Enable.Clearlogo)] + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] | Container.Content(addons)]</visible>
             </control>
@@ -197,7 +197,7 @@
             <bottom>160</bottom>
             <right>-20</right>
             <aspectratio scalediffuse="false">scale</aspectratio>
-            <texture diffuse="masks/poster-big.png" colordiffuse="artwork_dim">$INFO[Container(50).ListItem.Art(thumb)]</texture>
+            <texture diffuse="masks/poster-big.png" colordiffuse="artwork_dim" unload="true">$INFO[Container(50).ListItem.Art(thumb)]</texture>
             <bordersize>1</bordersize>
             <fadetime>200</fadetime>
             <bordertexture colordiffuse="FF5B5B5B" border="20" infill="false">masks/poster-big-border.png</bordertexture>

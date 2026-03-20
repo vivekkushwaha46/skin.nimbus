@@ -46,7 +46,7 @@
 					<top>35.5</top>
 					<width>270</width>
 					<height>270</height>
-					<texture diffuse="masks/addons.png" fallback="DefaultMovies.png" background="true">$VAR[IconWallThumbVar]</texture>
+					<texture diffuse="masks/addons.png" fallback="DefaultMovies.png" background="true" unload="true">$VAR[IconWallThumbVar]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<bordersize>20</bordersize>
 					<visible>!ListItem.IsParentFolder + $PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
@@ -56,7 +56,7 @@
 					<top>35.5</top>
 					<width>270</width>
 					<height>270</height>
-					<texture diffuse="masks/addons.png" colordiffuse="unfocused_text" fallback="DefaultMovies.png" background="true">$VAR[IconWallThumbVar]</texture>
+					<texture diffuse="masks/addons.png" colordiffuse="unfocused_text" fallback="DefaultMovies.png" background="true" unload="true">$VAR[IconWallThumbVar]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<bordersize>20</bordersize>
 					<visible>!ListItem.IsParentFolder + ![$PARAM[focused] + Control.HasFocus($PARAM[list_id])]</visible>
@@ -92,7 +92,7 @@
 					<top>11</top>
 					<width>582</width>
 					<height>327</height>
-					<texture colordiffuse="artwork_dim" diffuse="masks/flixscape.png" background="true">$VAR[FlixScapeVar]</texture>
+					<texture colordiffuse="artwork_dim" diffuse="masks/flixscape.png" background="true" unload="true">$VAR[FlixScapeVar]</texture>
 					<bordersize>1</bordersize>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<bordertexture colordiffuse="$VAR[BorderColorVar]" border="20" infill="false">masks/flixscape-border.png</bordertexture>

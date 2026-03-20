@@ -9,6 +9,7 @@
 		<fadetime>300</fadetime>
 		<timeperimage>7000</timeperimage>
 		<randomize>true</randomize>
+		<unload>true</unload>
 	</default>
 	<default type="label">
 		<label></label>

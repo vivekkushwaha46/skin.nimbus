@@ -627,7 +627,7 @@
 						<onright>$PARAM[group_id]30</onright>
 						<onup>$PARAM[group_id]50</onup>
 						<ondown>$PARAM[group_id]50</ondown>
-						<preloaditems>2</preloaditems>
+						<preloaditems>1</preloaditems>
 						<pagecontrol>$PARAM[group_id]30</pagecontrol>
 						<scrolltime tween="cubic" easing="out">300</scrolltime>
 						<itemlayout width="290" height="370">
@@ -1403,14 +1403,14 @@
 			<include>MediaMenuAnimations</include>
 			<aspectratio>stretch</aspectratio>
 			<fadetime>200</fadetime>
-			<texture background="true" diffuse="overlays/netflixfanartdiffuse.png">$VAR[NimbusCustomBackgroundImage]</texture>
+			<texture background="true" unload="true" diffuse="overlays/netflixfanartdiffuse.png">$VAR[NimbusCustomBackgroundImage]</texture>
 			<visible>!Player.HasMedia + String.IsEqual(Skin.String(HomeArtworkChoice),0)</visible>
 		</control>
 		<control type="image">
 			<include>BigLandscapeScreenDimensions</include>
 			<include>MediaMenuAnimations</include>
 			<fadetime>200</fadetime>
-			<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true">$VAR[NimbusCustomBackgroundImage]</texture>
+			<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true" unload="true">$VAR[NimbusCustomBackgroundImage]</texture>
 			<bordersize>1</bordersize>
 			<aspectratio scalediffuse="false">scale</aspectratio>
 			<bordertexture colordiffuse="$VAR[BorderColorVar]" border="17" infill="false">masks/giant-border.png</bordertexture>
@@ -1507,7 +1507,7 @@
 						<aspectratio>stretch</aspectratio>
 						<fadetime>200</fadetime>
 						<animation effect="fade" time="400">VisibleChange</animation>
-						<texture background="true" colordiffuse="artwork_dim" diffuse="overlays/netflixfanartdiffuse.png">$VAR[MediaFanartVar]</texture>
+						<texture background="true" unload="true" colordiffuse="artwork_dim" diffuse="overlays/netflixfanartdiffuse.png">$VAR[MediaFanartVar]</texture>
 						<visible>!Control.IsVisible(502) | $EXP[infodialog_active]</visible>
 					</control>
 					
@@ -1520,7 +1520,7 @@
 						<fadetime>400</fadetime>
 						<include>OpenClose_Left</include>
 						<animation effect="fade" time="400">VisibleChange</animation>
-						<texture background="true" colordiffuse="$VAR[Fanartosd_lightnessVar]">$VAR[PosterVar]</texture>
+						<texture background="true" unload="true" colordiffuse="$VAR[Fanartosd_lightnessVar]">$VAR[PosterVar]</texture>
 						<visible>!Control.IsVisible(32111)</visible>
 					</control>
 				</control> -->

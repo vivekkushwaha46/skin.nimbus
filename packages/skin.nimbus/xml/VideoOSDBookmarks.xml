@@ -75,7 +75,7 @@
 				<height>350</height>
 				<onup>9001</onup>
 				<ondown>9001</ondown>
-				<preloaditems>2</preloaditems>
+				<preloaditems>1</preloaditems>
 				<scrolltime tween="sine">200</scrolltime>
 				<orientation>horizontal</orientation>
 				<itemlayout width="360" height="340">

@@ -889,7 +889,7 @@
 		<onunfocus condition="!Skin.HasSetting(Disable.PersistentArtwork) + $EXP[isContent] + !$EXP[isEpisode] + [String.IsEmpty(Container($PARAM[list_id]).ListItem(0).Property(landscape)) + !String.IsEmpty(Container($PARAM[list_id]).ListItem(0).Property(fanart))]">SetProperty(nimbus_landscape_prop, $INFO[Container($PARAM[list_id]).ListItem(0).Property(fanart)], home)</onunfocus>
 		<onunfocus condition="!Skin.HasSetting(Disable.PersistentArtwork) + !$EXP[isContent]">SetProperty(nimbus_landscape_art, $INFO[Container($PARAM[list_id]).ListItem(0).Art(fanart)], home)</onunfocus>
 		<onunfocus condition="!Skin.HasSetting(Disable.PersistentArtwork) + !$EXP[isContent]">SetProperty(nimbus_landscape_prop, $INFO[Container($PARAM[list_id]).ListItem(0).Property(fanart)], home)</onunfocus>
-		<preloaditems>2</preloaditems>
+		<preloaditems>1</preloaditems>
 	</include>
 
 	<include name="BusyListSpinner">

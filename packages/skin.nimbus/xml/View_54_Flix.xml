@@ -28,7 +28,7 @@
 				<top>10</top>
 				<width>336</width>
 				<height>300</height>
-				<texture border="2" background="true">$VAR[FlixThumbVar]</texture>
+				<texture border="2" background="true" unload="true">$VAR[FlixThumbVar]</texture>
 				<aspectratio>keep</aspectratio>
 			</control>
 			<control type="label">
@@ -83,7 +83,7 @@
 					<!-- <visible>![$PARAM[focused] + Control.HasFocus(14100)]</visible> -->
 				</control>
 				<control type="image">
-					<texture colordiffuse="artwork_dim" diffuse="masks/addons.png" fallback="$PARAM[fallback_icon]" background="true">$VAR[FlixThumbVar]</texture>
+					<texture colordiffuse="artwork_dim" diffuse="masks/addons.png" fallback="$PARAM[fallback_icon]" background="true" unload="true">$VAR[FlixThumbVar]</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 				<control type="group">
@@ -188,7 +188,7 @@
 					<top>-7</top>
 					<width>270</width>
 					<height>270</height>
-					<texture diffuse="masks/addons.png" fallback="DefaultMovies.png" background="true">$VAR[IconWallThumbVar]</texture>
+					<texture diffuse="masks/addons.png" fallback="DefaultMovies.png" background="true" unload="true">$VAR[IconWallThumbVar]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<bordersize>20</bordersize>
 					<visible>!ListItem.IsParentFolder + $PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
@@ -198,7 +198,7 @@
 					<top>-7</top>
 					<width>270</width>
 					<height>270</height>
-					<texture diffuse="masks/addons.png" colordiffuse="unfocused_text" fallback="DefaultMovies.png" background="true">$VAR[IconWallThumbVar]</texture>
+					<texture diffuse="masks/addons.png" colordiffuse="unfocused_text" fallback="DefaultMovies.png" background="true" unload="true">$VAR[IconWallThumbVar]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<bordersize>20</bordersize>
 					<visible>!ListItem.IsParentFolder + ![$PARAM[focused] + Control.HasFocus($PARAM[list_id])]</visible>
@@ -230,7 +230,7 @@
 					<top>11</top>
 					<width>236</width>
 					<height>354</height>
-					<texture colordiffuse="artwork_dim" diffuse="masks/poster.png" background="true">$VAR[FlixPosterVar]</texture>
+					<texture colordiffuse="artwork_dim" diffuse="masks/poster.png" background="true" unload="true">$VAR[FlixPosterVar]</texture>
 					<bordersize>1</bordersize>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 					<bordertexture colordiffuse="$VAR[BorderColorVar]" border="20" infill="false">masks/poster-border.png</bordertexture>
