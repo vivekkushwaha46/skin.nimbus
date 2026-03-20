@@ -146,74 +146,58 @@ If your TV supports ADB (e.g., Amazon Fire TV Stick):
 
 ```bash
 # Push the ZIP
-adb connect <TV_IP_ADDRESS>
-adb push skin.nimbus.zip /sdcard/Download/
+adb connect <TV_IP_ADDRES
+## How to Distribute to Your Friends (Custom Repository)
 
-# Then install via Kodi UI as described in Method 1, Step 3
-```
+By following these steps, you will turn this GitHub repository into a custom Kodi source that your friends can use to install and update the skin automatically.
 
+### 1. Maintainer Guide — Creating a New Release
 
-### Method 4 — GitHub Pages Hosting (Professional Repository Style)
+Whenever you make changes to the skin and want to share them:
 
-This method creates a **Repository URL** that you can add as a "File Source" in Kodi. It will show a "Directory Listing" for your ZIP files, just like the original Nimbus repository.
-
-#### Step 1 — Generate the Repository Folder
-I have provided an automation script `update_repo.py` that prepares everything for GitHub Pages.
-
-1. Open your terminal in the `skin.nimbus` folder.
-2. Run: `python3 update_repo.py`
-3. This creates a `repo/` directory containing:
-   - `index.html` (The directory listing look)
-   - `addons.xml` (Kodi's index of your repo)
-   - `skin.nimbus/index.html` (Specific folder listing)
-   - `skin.nimbus/skin.nimbus-1.0.0.zip` (The packaged skin)
-
-#### Step 2 — Enable GitHub Pages
-1. Push your changes to GitHub:
+1. **Bump the version** in `addon.xml` (e.g., from `1.0.0` to `1.0.1`).
+2. **Run the release script**:
    ```bash
-   git add repo/ update_repo.py
-   git commit -m "Add repo hosting"
+   chmod +x release.sh
+   ./release.sh
+   ```
+3. **Push to GitHub**:
+   ```bash
+   git add .
+   git commit -m "New release: v1.0.1"
    git push
    ```
-2. On GitHub, go to your repository **Settings**.
-3. Select **Pages** from the left sidebar.
-4. Under **Build and deployment**, set the source to **Deploy from a branch**.
-5. Select your branch (e.g., `main`) and the folder **`/(root)`**.
-6. Click **Save**. GitHub will give you a URL like: `https://vivekkushwaha46.github.io/skin.nimbus/repo/`
 
-#### Step 3 — Add to Kodi
-1. In Kodi, go to **Settings** → **File Manager** → **Add source**.
-2. Enter your GitHub Pages URL (e.g., `https://vivekkushwaha46.github.io/skin.nimbus/repo/`).
-3. Name it `Nimbus Repo`.
-4. Install via **Settings → Add-ons → Install from zip file → Nimbus Repo** → browse and select the ZIP.
+### 2. Repository Setup (One-Time)
 
----
+To make the files "live" on the web:
+1. Go to your GitHub repository **Settings → Pages**.
+2. Set **Source** to "Deploy from a branch".
+3. Select the **main** branch and the **root (/)** folder.
+4. Click **Save**. Note your site URL (e.g., `https://vivekkushwaha46.github.io/skin.nimbus/`).
 
+### 3. User Installation Guide (For Your Friends)
 
-## Reverting to the Original Skin
+Share these instructions with your friends to help them install the skin in Kodi:
 
-If anything goes wrong, you can always switch back:
+#### Phase A: Add the Source
+1. Open Kodi and go to **Settings** (gear icon) → **File Manager**.
+2. Select **Add source**.
+3. Click **<None>** and enter this exact URL:
+   `https://vivekkushwaha46.github.io/skin.nimbus/repo/`
+4. Name the source `Nimbus Repo` and click **OK**.
 
-1. Open Kodi → **Settings** → **Interface** → **Skin** → select a different skin (e.g., **Estuary**).
-2. Uninstall this skin: **Settings** → **Add-ons** → **My add-ons** → **Look and feel** → **Skin** → **Nimbus** → **Uninstall**.
-3. Reinstall the original Nimbus from [ivarbrandt's repository](https://github.com/ivarbrandt/skin.nimbus).
-
----
-
-## Troubleshooting
-
-| Problem | Solution |
-|---|---|
-| *"Does not have the correct structure"* | The ZIP root must contain a folder named `skin.nimbus` with `addon.xml` inside it. Re-zip correctly. |
-| *Missing dependency: `script.nimbus.helper`* | Install the helper addon first. Get it from the same source you originally installed Nimbus from, or from ivarbrandt's GitHub. |
-| *Skin loads but looks broken* | Clear Kodi's skin cache: **Settings → System → Troubleshooting → Reset above settings to default**. Then restart Kodi. |
-| *TV still lags* | Lower Kodi's GUI resolution: **Settings → System → Display → Resolution** → try 720p. Also disable hardware acceleration if available. |
-| *Can't find "Unknown sources" toggle* | Change the Settings level to **Expert** (bottom-left of Settings screen). |
+#### Phase B: Install the Skin
+1. Go back to the Kodi home screen.
+2. Select **Add-ons** → **Install from zip file** (click Yes if warned about unknown sources).
+3. Select **Nimbus Repo**.
+4. Inside, click on **skin.nimbus** and select the ZIP file (e.g., `skin.nimbus-1.0.0.zip`).
+5. Wait for the "Add-on installed" notification and select **Yes** when asked to switch to the skin.
 
 ---
 
 ## Credits
 
 - **Original Skin:** [Nimbus by Ivar Brandt](https://github.com/ivarbrandt/skin.nimbus)
-- **License:** CC BY-SA 4.0 / GNU GPL v2.0 (see [LICENSE.txt](LICENSE.txt))
+- **License:** CC BY-SA 4.0 / GNU GPL v2.0
 - **Optimization Fork:** [vivekkushwaha46](https://github.com/vivekkushwaha46/skin.nimbus)

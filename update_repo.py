@@ -86,12 +86,13 @@ def main():
         f.write(md5_val)
         
     # Copy addon.xml to use for repository index (Kodi requirement)
-    # Note: A real repo needs an addons.xml containing ALL addons.
-    # For a single-addon repo, we can just use the addon description.
     with open(os.path.join(REPO_DIR, "addons.xml"), "w") as f:
         with open("addon.xml", "r") as src:
             f.write('<?xml version="1.0" encoding="UTF-8"?>\n<addons>\n')
-            f.write(src.read())
+            # Filter out the XML declaration from the source file
+            addon_xml_content = src.read()
+            addon_xml_content = re.sub(r'<\?xml[^?]+\?>\s*', '', addon_xml_content)
+            f.write(addon_xml_content)
             f.write('\n</addons>')
             
     with open(os.path.join(REPO_DIR, "addons.xml.md5"), "w") as f:
