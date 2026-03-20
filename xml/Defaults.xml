@@ -6,7 +6,7 @@
 	</default>
 	<default type="multiimage">
 		<aspectratio align="center">scale</aspectratio>
-		<fadetime>800</fadetime>
+		<fadetime>300</fadetime>
 		<timeperimage>7000</timeperimage>
 		<randomize>true</randomize>
 	</default>

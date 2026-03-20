@@ -287,7 +287,7 @@
 				<!-- <ondown condition="![$EXP[isMovie] | $EXP[isTVShow]] + String.IsEqual(Skin.String(OnDownSetting.Other),1)">Container.SetViewMode(500)</ondown> -->
 				<ondown condition="![$EXP[isMovie] | $EXP[isTVShow]] + String.IsEqual(Skin.String(PosterFlowOnDownSetting.Other),1)">info</ondown>
 				<viewtype label="310981">icon</viewtype>
-				<preloaditems>2</preloaditems>
+				<preloaditems>1</preloaditems>
 				<pagecontrol>5199</pagecontrol>
 				<scrolltime tween="quadratic">1159</scrolltime>
 				<onback condition="Player.HasMedia + !String.IsEmpty(Skin.String(TrailerPlaying))">Stop</onback>
@@ -372,7 +372,7 @@
 				<top>0</top>
 				<width>101%</width>
 				<height>101%</height>
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<texture colordiffuse="FF4C4C4C" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$INFO[Container(51).ListItem.Art(fanart)]</texture>
 				<aspectratio>stretch</aspectratio>
 				<include>ArtworkAnimations</include>

@@ -629,7 +629,7 @@
 						<ondown>$PARAM[group_id]50</ondown>
 						<preloaditems>2</preloaditems>
 						<pagecontrol>$PARAM[group_id]30</pagecontrol>
-						<scrolltime tween="cubic" easing="out">500</scrolltime>
+						<scrolltime tween="cubic" easing="out">300</scrolltime>
 						<itemlayout width="290" height="370">
 							<control type="group">
 								<left>25</left>
@@ -1238,7 +1238,7 @@
 				<texture fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[BlurTextureVar]</texture>
 			</control>
 			<control type="image">
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
 				<!-- <animation effect="fade" start="0" end="100" time="500">WindowOpen</animation>
 				<animation effect="fade" start="100" end="0" time="500">WindowClose</animation> -->
@@ -1402,14 +1402,14 @@
 			<include>NetflixScreenDimensions</include>
 			<include>MediaMenuAnimations</include>
 			<aspectratio>stretch</aspectratio>
-			<fadetime>500</fadetime>
+			<fadetime>200</fadetime>
 			<texture background="true" diffuse="overlays/netflixfanartdiffuse.png">$VAR[NimbusCustomBackgroundImage]</texture>
 			<visible>!Player.HasMedia + String.IsEqual(Skin.String(HomeArtworkChoice),0)</visible>
 		</control>
 		<control type="image">
 			<include>BigLandscapeScreenDimensions</include>
 			<include>MediaMenuAnimations</include>
-			<fadetime>500</fadetime>
+			<fadetime>200</fadetime>
 			<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true">$VAR[NimbusCustomBackgroundImage]</texture>
 			<bordersize>1</bordersize>
 			<aspectratio scalediffuse="false">scale</aspectratio>
@@ -1505,7 +1505,7 @@
 						<width>1300</width>
 						<height>731</height>
 						<aspectratio>stretch</aspectratio>
-						<fadetime>500</fadetime>
+						<fadetime>200</fadetime>
 						<animation effect="fade" time="400">VisibleChange</animation>
 						<texture background="true" colordiffuse="artwork_dim" diffuse="overlays/netflixfanartdiffuse.png">$VAR[MediaFanartVar]</texture>
 						<visible>!Control.IsVisible(502) | $EXP[infodialog_active]</visible>

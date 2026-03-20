@@ -13,7 +13,7 @@
 			<control type="image">
 				<include>NetflixScreenDimensions</include>
 				<aspectratio>stretch</aspectratio>
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<include>ArtworkAnimations</include>
 				<texture background="true" diffuse="overlays/netflixfanartdiffuse.png" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[MediaFanartVar]</texture>
 				<visible>
@@ -32,7 +32,7 @@
 			</control>
 			<control type="image">
 				<include>BigLandscapeScreenDimensions</include>
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[FlixLandscapeVar]</texture>
 				<bordersize>1</bordersize>
 				<aspectratio scalediffuse="false">scale</aspectratio>

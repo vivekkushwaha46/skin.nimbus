@@ -371,9 +371,9 @@
 				<ondown condition="![$EXP[isMovie] | $EXP[isTVShow]] + String.IsEqual(Skin.String(OnDownSetting.Other),1)">Container.SetViewMode(501)</ondown>
 				<ondown condition="![$EXP[isMovie] | $EXP[isTVShow]] + String.IsEqual(Skin.String(OnDownSetting.Other),2)">info</ondown>
 				<viewtype label="311011">icon</viewtype>
-				<preloaditems>2</preloaditems>
+				<preloaditems>1</preloaditems>
 				<pagecontrol>5199</pagecontrol>
-				<scrolltime tween="cubic" easing="out">500</scrolltime>
+				<scrolltime tween="cubic" easing="out">300</scrolltime>
 				<onunfocus condition="Player.HasMedia + !String.IsEmpty(Skin.String(TrailerPlaying))">Stop</onunfocus>
 				<onunfocus condition="!String.IsEmpty(Skin.String(TrailerPlaying))">Skin.Reset(TrailerPlaying)</onunfocus>
 				<!-- <visible>Container.Content(artists) | Container.Content(albums) | Container.Content(sets) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | [Container.Content(episodes) + !String.StartsWith(Container.PluginCategory,Season)] | Container.Content(musicvideos) | Container.Content(images) | Container.Content(videos) | Container.Content(games)</visible> -->

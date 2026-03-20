@@ -27,7 +27,7 @@
 				<texture fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[FlixPosterVar]</texture>
 			</control>
 			<control type="image">
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
 				<depth>DepthBackground</depth>
 				<include>FullScreenDimensions</include>
@@ -47,7 +47,7 @@
       <control type="image">
         <include>FullScreenDimensions</include>
         <aspectratio>stretch</aspectratio>
-        <fadetime>500</fadetime>
+        <fadetime>200</fadetime>
         <animation effect="fade" time="400">VisibleChange</animation>
         <texture background="true" colordiffuse="FF333333">$INFO[ListItem.Art(fanart)]</texture>
         <visible>!Skin.HasSetting(Enable.BackgroundBlur)</visible>
@@ -199,7 +199,7 @@
             <aspectratio scalediffuse="false">scale</aspectratio>
             <texture diffuse="masks/poster-big.png" colordiffuse="artwork_dim">$INFO[Container(50).ListItem.Art(thumb)]</texture>
             <bordersize>1</bordersize>
-            <fadetime>600</fadetime>
+            <fadetime>200</fadetime>
             <bordertexture colordiffuse="FF5B5B5B" border="20" infill="false">masks/poster-big-border.png</bordertexture>
           </control>
           <control type="image">

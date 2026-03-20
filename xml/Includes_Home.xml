@@ -64,6 +64,7 @@
 	</include>
 
 	<include name="WidgetListPoster">
+		<param name="limit">10</param>
 		<param name="onclick_condition">false</param>
 		<definition>
 			<include content="CategoryLabel">
@@ -174,6 +175,7 @@
 	</include> -->
 
 	<include name="WidgetListLandscape">
+		<param name="limit">10</param>
 		<param name="onclick_condition">false</param>
 		<definition>
 			<include content="CategoryLabel">
@@ -228,6 +230,7 @@
 	</include>
 
 	<include name="WidgetListSquare">
+		<param name="item_limit">10</param>
 		<param name="visible">true</param>
 		<param name="sub_label">$INFO[ListItem.Label]</param>
 		<param name="fallback_icon">DefaultFolder.png</param>
@@ -297,7 +300,7 @@
 	</include>
 
 	<include name="WidgetListCategory">
-		<!-- <param name="item_limit">30</param> -->
+		<param name="item_limit">15</param>
 		<!-- <param name="icon_height">230</param> -->
 		<param name="icon">$PARAM[icon]</param>
 		<param name="visible">true</param>
@@ -431,7 +434,7 @@
 
 	<include name="WidgetListPVR">
 		<param name="item_treshold">0</param>
-		<param name="item_limit">15</param>
+		<param name="item_limit">10</param>
 		<!-- <param name="icon_height">230</param> -->
 		<param name="icon">$PARAM[icon]</param>
 		<param name="info_update">300</param>
@@ -813,7 +816,7 @@
 	</include>
 
 	<include name="WidgetListCommon">
-		<scrolltime tween="cubic" easing="out">700</scrolltime>
+		<scrolltime tween="cubic" easing="out">300</scrolltime>
 		<orientation>horizontal</orientation>
 		<onleft condition="String.IsEqual(Skin.String(onLeftSetting),0)">9000</onleft>
 		<onleft condition="String.IsEqual(Skin.String(onLeftSetting),1)">$PARAM[list_id]</onleft>

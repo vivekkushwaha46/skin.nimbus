@@ -24,7 +24,7 @@
 			<control type="image">
 				<include>NetflixScreenDimensions</include>
 				<aspectratio>stretch</aspectratio>
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<include>ArtworkAnimations</include>
 				<texture background="true" diffuse="overlays/netflixfanartdiffuse.png" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[HomeFanartVar]</texture>
 				<visible>!String.IsEqual(Skin.String(HomeArtworkChoice),1)</visible>
@@ -35,7 +35,7 @@
 					<!-- <effect type="fade" start="100" end="0" time="650" tween="cubic" easing="in"/> -->
 				</animation>
 				<include>BigLandscapeScreenDimensions</include>
-				<fadetime>500</fadetime>
+				<fadetime>200</fadetime>
 				<include>ArtworkAnimations</include>
 				<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[HomeFanartVar]</texture>
 				<bordersize>1</bordersize>
@@ -147,7 +147,7 @@
 						<onright condition="!String.IsEmpty(Window(home).Property(nimbus.search.input))">SetFocus(2000)</onright>
 						<onup>700</onup>
 						<ondown>9000</ondown>
-						<scrolltime tween="cubic" easing="out">500</scrolltime>
+						<scrolltime tween="cubic" easing="out">300</scrolltime>
 						<include content="List">
               <param name="id" value="9000" />
               <param name="list_width" value="444" />

@@ -33,7 +33,7 @@
 				<!-- <control type="image">
 					<include>NetflixScreenDimensions</include>
 					<aspectratio>stretch</aspectratio>
-					<fadetime>500</fadetime>
+					<fadetime>200</fadetime>
 					<include>ArtworkAnimations</include>
 					<texture background="true" diffuse="overlays/netflixfanartdiffuse.png" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[MediaFanartVar]</texture>
 					<visible>!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes)</visible>
@@ -42,7 +42,7 @@
 					<left>50</left>
 					<top>list_top_offset</top>			
 					<bottom>70</bottom>
-					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<scrolltime tween="cubic" easing="out">300</scrolltime>
 					<pagecontrol>531</pagecontrol>
 					<onright>56</onright>
 					<onleft>531</onleft>

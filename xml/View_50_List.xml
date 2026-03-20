@@ -104,7 +104,7 @@
 					<bottom>240</bottom>
 					<width>930</width>
 					<height>523</height>
-					<fadetime>500</fadetime>
+					<fadetime>200</fadetime>
 					<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[ListLandscapeVar]</texture>
 					<bordersize>1</bordersize>
 					<aspectratio scalediffuse="false">scale</aspectratio>
@@ -129,7 +129,7 @@
 					<bottom>90</bottom>
 					<width>610</width>
 					<height>915</height>
-					<fadetime>500</fadetime>
+					<fadetime>200</fadetime>
 					<texture colordiffuse="artwork_dim" diffuse="masks/colossal-poster.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[FlixPosterVar]</texture>
 					<bordersize>1</bordersize>
 					<bordertexture colordiffuse="$VAR[BorderColorVar]" border="20" infill="false">masks/colossal-poster-border.png</bordertexture>
@@ -164,7 +164,7 @@
 					<top>0</top>
 					<width>101%</width>
 					<height>101%</height>
-					<fadetime>500</fadetime>
+					<fadetime>200</fadetime>
 					<texture colordiffuse="artwork_dim" diffuse="overlays/fanart-diffuse.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[ListLandscapeVar]</texture>
 					<aspectratio>stretch</aspectratio>
 					<include>ArtworkAnimations</include>
@@ -204,7 +204,7 @@
 						<bottom>190</bottom>
 						<width>700</width>
 						<height>700</height>
-						<fadetime>500</fadetime>
+						<fadetime>200</fadetime>
 						<texture colordiffuse="artwork_dim" diffuse="masks/addons.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<include>ArtworkAnimations</include>
@@ -220,7 +220,7 @@
 						<bottom>290</bottom>
 						<width>500</width>
 						<height>500</height>
-						<fadetime>500</fadetime>
+						<fadetime>200</fadetime>
 						<texture colordiffuse="artwork_dim" diffuse="masks/addons.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<include>ArtworkAnimations</include>
@@ -601,7 +601,7 @@
 					<bottom>75</bottom>
 					<movement>6</movement>
 					<focusposition>5</focusposition>
-					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<scrolltime tween="cubic" easing="out">300</scrolltime>
 					<orientation>vertical</orientation>
 					<pagecontrol>50600</pagecontrol>
 					<!-- LANDSCAPE + POSTER -->
