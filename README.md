@@ -153,18 +153,21 @@ By following these steps, you will turn this GitHub repository into a custom Kod
 
 ### 1. Maintainer Guide — Creating a New Release
 
-Whenever you make changes to the skin and want to share them:
+Whenever you make changes to the skin or want to add a dependency (like `script.nimbus.helper`):
 
-1. **Bump the version** in `addon.xml` (e.g., from `1.0.0` to `1.0.1`).
-2. **Run the release script**:
+1. **Place addon folders** in the `packages/` directory:
+   - `packages/skin.nimbus/`
+   - `packages/script.nimbus.helper/`
+2. **Bump versions** in their respective `addon.xml` files.
+3. **Run the release script**:
    ```bash
    chmod +x release.sh
    ./release.sh
    ```
-3. **Push to GitHub**:
+4. **Push to GitHub**:
    ```bash
    git add .
-   git commit -m "New release: v1.0.1"
+   git commit -m "Add dependencies and update skin"
    git push
    ```
 
@@ -191,13 +194,15 @@ Share these instructions with your friends to help them install the skin in Kodi
 1. Go back to the Kodi home screen.
 2. Select **Add-ons** → **Install from zip file** (click Yes if warned about unknown sources).
 3. Select **Nimbus Repo**.
-4. Inside, click on **skin.nimbus** and select the ZIP file (e.g., `skin.nimbus-1.0.0.zip`).
-5. Wait for the "Add-on installed" notification and select **Yes** when asked to switch to the skin.
+4. Inside, click on **skin.nimbus** and select the ZIP file.
+5. Kodi will now automatically find and install `script.nimbus.helper` from the same repository as a dependency!
+6. Select **Yes** when asked to switch to the skin.
 
 ---
 
 ## Credits
 
 - **Original Skin:** [Nimbus by Ivar Brandt](https://github.com/ivarbrandt/skin.nimbus)
+- **Original Helper:** [script.nimbus.helper](https://github.com/ivarbrandt/script.nimbus.helper)
 - **License:** CC BY-SA 4.0 / GNU GPL v2.0
 - **Optimization Fork:** [vivekkushwaha46](https://github.com/vivekkushwaha46/skin.nimbus)

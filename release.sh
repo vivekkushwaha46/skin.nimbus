@@ -1,64 +1,67 @@
 #!/bin/bash
 
 # Configuration
-ADDON_ID=$(sed -n 's/.*<addon id="\([^"]*\)".*/\1/p' addon.xml | head -1)
-VERSION=$(sed -n 's/.*version="\([^"]*\)".*/\1/p' addon.xml | head -2 | tail -1)
 REPO_DIR="repo"
-SKIN_DIR="$REPO_DIR/$ADDON_ID"
+PACKAGES_DIR="packages"
 
-if [ -z "$ADDON_ID" ] || [ -z "$VERSION" ]; then
-    echo "Error: Could not find addon ID or version in addon.xml"
-    exit 1
-fi
+echo "Building Kodi Repository Distribution..."
 
-ZIP_NAME="${ADDON_ID}-${VERSION}.zip"
-ZIP_PATH="${SKIN_DIR}/${ZIP_NAME}"
+# Ensure repo directory exists
+mkdir -p "$REPO_DIR"
 
-echo "Releasing $ADDON_ID version $VERSION..."
-
-# Ensure directories exist
-mkdir -p "$SKIN_DIR"
-
-# Step 1: Package the addon
-echo "Packaging $ZIP_NAME..."
-# Using python for reliable cross-platform zipping with correct root folder
-python3 -c "
-import os, zipfile, re
-addon_id = '$ADDON_ID'
-with zipfile.ZipFile('$ZIP_PATH', 'w', zipfile.ZIP_DEFLATED) as zipf:
-    for root, dirs, files in os.walk('.'):
-        if any(x in root for x in ['.git', '$REPO_DIR', 'tmp_package']): continue
-        for file in files:
-            if file in ['.gitignore', '.DS_Store', 'package.sh', 'update_repo.py', 'release.sh', 'skin.nimbus.zip']: continue
-            abs_path = os.path.join(root, file)
-            arc_name = os.path.join(addon_id, os.path.relpath(abs_path, '.'))
-            zipf.write(abs_path, arc_name)
-"
-
-# Step 2: Generate MD5
-echo "Generating MD5..."
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    md5 -q "$ZIP_PATH" > "${ZIP_PATH}.md5"
-else
-    md5sum "$ZIP_PATH" | awk '{ print $1 }' > "${ZIP_PATH}.md5"
-fi
-
-# Step 3: Generate addons.xml
-echo "Generating addons.xml..."
+# Initialize addons.xml
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$REPO_DIR/addons.xml"
 echo '<addons>' >> "$REPO_DIR/addons.xml"
-# Filter out the XML declaration from addon.xml and append
-sed 's/<?xml.*?>//g' addon.xml >> "$REPO_DIR/addons.xml"
-echo '</addons>' >> "$REPO_DIR/addons.xml"
 
-# Step 4: Generate addons.xml.md5
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    md5 -q "$REPO_DIR/addons.xml" > "$REPO_DIR/addons.xml.md5"
-else
-    md5sum "$REPO_DIR/addons.xml" | awk '{ print $1 }' > "$REPO_DIR/addons.xml.md5"
-fi
+# Function to generate MD5 in a portable way
+gen_md5() {
+    local file=$1
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        md5 -q "$file" > "${file}.md5"
+    else
+        md5sum "$file" | awk '{ print $1 }' > "${file}.md5"
+    fi
+}
+
+# Iterate through all addons in the packages directory
+for addon_path in "$PACKAGES_DIR"/*/; do
+    [ -e "$addon_path" ] || continue
+    addon_id=$(basename "$addon_path")
+    addon_xml="$addon_path/addon.xml"
+    
+    if [ ! -f "$addon_xml" ]; then
+        echo "Skipping $addon_id: No addon.xml found."
+        continue
+    fi
+    
+    version=$(sed -n 's/.*<addon.*version="\([^"]*\)".*/\1/p' "$addon_xml" | head -1)
+    echo "Processing $addon_id version $version..."
+    
+    # Create addon-specific folder in repo
+    out_dir="$REPO_DIR/$addon_id"
+    mkdir -p "$out_dir"
+    
+    zip_name="${addon_id}-${version}.zip"
+    zip_path="${out_dir}/${zip_name}"
+    
+    # Step 1: Package the addon
+    echo "  - Packaging $zip_name..."
+    # Ensure ZIP contains the correct root folder
+    (cd "$PACKAGES_DIR" && zip -r "../$zip_path" "$addon_id" -x "*.git*" -x "*.DS_Store" -x "tmp_package/*" -x "repo/*") > /dev/null
+    
+    # Step 2: Generate MD5 for ZIP
+    gen_md5 "$zip_path"
+    
+    # Step 3: Append metadata to addons.xml (removing declarations)
+    sed 's/<?xml.*?>//g' "$addon_xml" >> "$REPO_DIR/addons.xml"
+    echo "" >> "$REPO_DIR/addons.xml"
+done
+
+# Finalize addons.xml
+echo '</addons>' >> "$REPO_DIR/addons.xml"
+gen_md5 "$REPO_DIR/addons.xml"
 
 echo "--------------------------------------------------"
-echo "Success! Release files created in the '$REPO_DIR/' directory."
-echo "Now commit and push the '$REPO_DIR/' folder to GitHub."
+echo "Success! All addons packaged in the '$REPO_DIR/' directory."
+echo "Now commit and push the '$REPO_DIR/' and '$PACKAGES_DIR/' folders to GitHub."
 echo "--------------------------------------------------"
