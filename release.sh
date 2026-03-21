@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-REPO_DIR="/Users/imvivek/work/kodi-repo"
+REPO_DIR="repo"
 PACKAGES_DIR="packages"
 TEXTURE_PACKER="./TexturePacker"
 
