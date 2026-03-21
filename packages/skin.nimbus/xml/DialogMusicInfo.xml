@@ -36,7 +36,7 @@
 				<include>OpenClose_Left</include>
 				<include>Visible_Right</include>
 				<left>705</left>
-				<visible>![Window.Is(songinformation) + Window.IsActive(musicinformation)]</visible>
+				<visible>! [Window.Is(songinformation) + Window.IsActive(musicinformation)]</visible>
 				<control type="group">
 					<visible>Integer.IsEqual(Container(50).NumItems,0) + String.IsEmpty(Control.GetLabel(400))</visible>
 					<top>455</top>
@@ -100,7 +100,7 @@
 					</control>
 					<control type="group">
 						<animation effect="slide" start="0,0" end="0,-295" time="0" condition="Integer.IsEqual(Container(50).NumItems,0)">Conditional</animation>
-						<visible>[!Integer.IsEqual(Container(50).NumItems,0) + String.IsEmpty(Control.GetLabel(400))]</visible>
+						<visible>[ !Integer.IsEqual(Container(50).NumItems,0) + String.IsEmpty(Control.GetLabel(400))]</visible>
 						<control type="image">
 							<left>-4</left>
 							<top>30</top>
@@ -179,7 +179,7 @@
 				<include>OpenClose_Right</include>
 				<include>Visible_Right</include>
 				<left>80</left>
-				<visible>![Window.Is(songinformation) + Window.IsActive(musicinformation)]</visible>
+				<visible>! [Window.Is(songinformation) + Window.IsActive(musicinformation)]</visible>
 				<control type="panel" id="50">
 					<left>590</left>
 					<top>170</top>
@@ -202,7 +202,7 @@
 							<height>60</height>
 							<font>font12</font>
 							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label,[COLOR grey], - [/COLOR]]$INFO[ListItem.Label2]</label>
+							<label>$INFO[ListItem.Label,[COLOR grey], - [/COLOR] ]$INFO[ListItem.Label2]</label>
 						</control>
 					</itemlayout>
 					<focusedlayout height="72.5" width="595" condition="Container.Content(songs)">
@@ -219,7 +219,7 @@
 							<height>60</height>
 							<font>font12</font>
 							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label,[COLOR white], - [/COLOR]]$INFO[ListItem.Label2]</label>
+							<label>$INFO[ListItem.Label,[COLOR white], - [/COLOR] ]$INFO[ListItem.Label2]</label>
 						</control>
 					</focusedlayout>
 					<itemlayout height="72.5" width="595" condition="Container.Content(albums)">
@@ -236,7 +236,7 @@
 							<height>60</height>
 							<font>font12</font>
 							<aligny>center</aligny>
-							<label>$INFO[ListItem.TrackNumber,[COLOR grey], - [/COLOR]]$INFO[ListItem.Label]</label>
+							<label>$INFO[ListItem.TrackNumber,[COLOR grey], - [/COLOR] ]$INFO[ListItem.Label]</label>
 						</control>
 						<control type="group">
 							<left>230</left>
@@ -259,7 +259,7 @@
 								<height>60</height>
 								<font>font12</font>
 								<aligny>center</aligny>
-								<label>$INFO[ListItem.TrackNumber,[COLOR white], - [/COLOR]]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.TrackNumber,[COLOR white], - [/COLOR] ]$INFO[ListItem.Label]</label>
 							</control>
 							<control type="group">
 								<left>230</left>
@@ -293,7 +293,7 @@
 							<font>font27_narrow</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label2,[COLOR button_focus], - [/COLOR]]$INFO[ListItem.Label]</label>
+							<label>$INFO[ListItem.Label2,[COLOR button_focus], - [/COLOR] ]$INFO[ListItem.Label]</label>
 						</control>
 						<control type="group">
 							<left>230</left>
@@ -330,7 +330,7 @@
 								<align>center</align>
 								<aligny>center</aligny>
 								<autoscroll delay="1000" time="1000" repeat="1000">true</autoscroll>
-								<label>$INFO[ListItem.Label2,[COLOR button_focus], - [/COLOR]]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Label2,[COLOR button_focus], - [/COLOR] ]$INFO[ListItem.Label]</label>
 							</control>
 							<control type="group">
 								<left>230</left>
@@ -460,7 +460,7 @@
 									<width>410</width>
 									<height>30</height>
 									<font>font27_narrow</font>
-									<label>$INFO[ListItem.Label,[COLOR button_focus],[/COLOR]] $INFO[ListItem.Label2]</label>
+									<label>$INFO[ListItem.Label,[COLOR button_focus],[/COLOR] ] $INFO[ListItem.Label2]</label>
 								</control>
 							</itemlayout>
 							<focusedlayout height="35">
@@ -488,7 +488,7 @@
 									<width>410</width>
 									<height>30</height>
 									<font>font27_narrow</font>
-									<label>$INFO[ListItem.Label,[COLOR button_focus],[/COLOR]] $INFO[ListItem.Label2]</label>
+									<label>$INFO[ListItem.Label,[COLOR button_focus],[/COLOR] ] $INFO[ListItem.Label2]</label>
 									<scroll>false</scroll>
 									<visible>!Control.HasFocus(41)</visible>
 								</control>

@@ -20,7 +20,7 @@
 		<include>DefaultBackground</include>
 		<control type="group">
 			<include>MediaMenuAnimations</include>
-			<visible>[![Player.HasVideo | [Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)]] | !String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))] + !String.IsEmpty(Window(home).Property(nimbus.search.input))</visible>
+			<visible>[ ! [Player.HasVideo | [Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)] ] | !String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))] + !String.IsEmpty(Window(home).Property(nimbus.search.input))</visible>
 			<control type="image">
 				<include>NetflixScreenDimensions</include>
 				<aspectratio>stretch</aspectratio>
@@ -111,7 +111,7 @@
 						<!-- <param name="width" value="600"/> -->
 					</include>
 					<control type="label">
-						<visible>![$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode]] + !String.IsEqual(Window(home).Property(nimbus.search.history.count),0)</visible>
+						<visible>! [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] ] + !String.IsEqual(Window(home).Property(nimbus.search.history.count),0)</visible>
 						<top>200</top>
 						<left>90</left>
 						<width>820</width>

@@ -227,7 +227,7 @@
 					<visible>Player.SeekEnabled + Player.Seeking</visible>
 				</control>
 				<control type="group">
-					<!-- <visible>[!VideoPlayer.Content(livetv) + !Window.IsActive(VideoOSD.xml)] | VideoPlayer.Content(livetv)</visible> -->
+					<!-- <visible>[ !VideoPlayer.Content(livetv) + !Window.IsActive(VideoOSD.xml)] | VideoPlayer.Content(livetv)</visible> -->
 					<bottom>60</bottom>
 					<!-- <width>auto</width> -->
 					<height>40</height>
@@ -248,7 +248,7 @@
 						<textcolor>osd_light</textcolor>
 						<label>$VAR[PausedLabel]$VAR[PlayerElapsedTimeVar] [B]/[/B] $VAR[PlayerDurationVar]</label>
 						<align>center</align>
-						<visible>![Player.Seeking | Player.Forwarding | Player.Rewinding]</visible>
+						<visible>! [Player.Seeking | Player.Forwarding | Player.Rewinding]</visible>
 					</control>
 					<control type="label">
 						<!-- <width>612</width>
@@ -261,7 +261,7 @@
 						<scroll>true</scroll>
 						<scrollspeed>100</scrollspeed>
 						<align>center</align>
-						<!-- <visible>![Player.Seeking | Player.Forwarding | Player.Rewinding]</visible> -->
+						<!-- <visible>! [Player.Seeking | Player.Forwarding | Player.Rewinding]</visible> -->
 						<!-- <visible>VideoPlayer.Content(livetv)</visible> -->
 					</control>
 				</control>
@@ -304,7 +304,7 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<label>$VAR[NowPlayingBreadcrumbsVar]</label>
-					<visible>!VideoPlayer.Content(livetv) + [[String.IsEmpty(Player.Art(clearlogo)) + String.IsEmpty(Player.Art(tvshow.clearlogo))] | [Skin.HasSetting(Disable.OSDClearlogo) + !Skin.HasSetting(Disable.OSDTitle)]]</visible>
+					<visible>!VideoPlayer.Content(livetv) + [ [String.IsEmpty(Player.Art(clearlogo)) + String.IsEmpty(Player.Art(tvshow.clearlogo))] | [Skin.HasSetting(Disable.OSDClearlogo) + !Skin.HasSetting(Disable.OSDTitle)] ]</visible>
 				</control>
 				<control type="image">
 					<top>-763</top>
@@ -340,8 +340,8 @@
 					<animation condition="VideoPlayer.Content(livetv)" reversible="true">
 						<effect type="slide" start="0,0" end="0,-839.5" time="500" tween="cubic" easing="inout" />
 					</animation>
-					<!-- <visible>![Window.IsVisible(dialogbusy) | Player.HasMedia] + $EXP[isContent] + !String.IsEmpty(ListItem.Genre)</visible> -->
-					<visible>[!VideoPlayer.Content(livetv) + !Window.IsActive(VideoOSD.xml)] | VideoPlayer.Content(livetv)</visible>
+					<!-- <visible>! [Window.IsVisible(dialogbusy) | Player.HasMedia] + $EXP[isContent] + !String.IsEmpty(ListItem.Genre)</visible> -->
+					<visible>[ !VideoPlayer.Content(livetv) + !Window.IsActive(VideoOSD.xml)] | VideoPlayer.Content(livetv)</visible>
 					<include content="DO_FlixInfoIcon">
 						<param name="flixlabel" value="$VAR[DO_Resolution_Label]"/>
 						<param name="visible" value="!String.IsEmpty(VideoPlayer.VideoResolution) + !Skin.HasSetting(Disable.OSDVideoCodec)"/>
@@ -430,9 +430,9 @@
 				<height>550</height>
 				<texture colordiffuse="$VAR[OSDTextureColorVar]">$VAR[OSDTextureVar]</texture>
 				<visible>!String.IsEqual(Skin.String(OSDStyleSetting),1) | 
-					![
+					! [
 						[VideoPlayer.Content(episodes) + Skin.HasSetting(Disable.OSDEpisodeInfo) + Skin.HasSetting(Disable.OSDEpisodePlot)] | 
-						[!VideoPlayer.Content(episodes) + !VideoPlayer.Content(livetv) + Skin.HasSetting(Disable.OSDMoviePlot)]
+						[ !VideoPlayer.Content(episodes) + !VideoPlayer.Content(livetv) + Skin.HasSetting(Disable.OSDMoviePlot)]
 					]
 				</visible>
 			</control>
@@ -443,12 +443,12 @@
 				<visible>String.IsEqual(Skin.String(OSDStyleSetting),1) + 
 					[
 						[VideoPlayer.Content(episodes) + Skin.HasSetting(Disable.OSDEpisodeInfo) + Skin.HasSetting(Disable.OSDEpisodePlot)] | 
-						[!VideoPlayer.Content(episodes) + !VideoPlayer.Content(livetv) + Skin.HasSetting(Disable.OSDMoviePlot)]
+						[ !VideoPlayer.Content(episodes) + !VideoPlayer.Content(livetv) + Skin.HasSetting(Disable.OSDMoviePlot)]
 					]
 				</visible>
 			</control>
 			<control type="image">
-				<visible>String.IsEqual(Skin.String(OSDStyleSetting),1) + [!Skin.HasSetting(Disable.OSDClearlogo) | !Skin.HasSetting(Disable.OSDTitle) | !Skin.HasSetting(Disable.OSDStudiologo)]</visible>
+				<visible>String.IsEqual(Skin.String(OSDStyleSetting),1) + [ !Skin.HasSetting(Disable.OSDClearlogo) | !Skin.HasSetting(Disable.OSDTitle) | !Skin.HasSetting(Disable.OSDStudiologo)]</visible>
 				<top>0</top>
 				<height>550</height>
 				<texture flipy="true" colordiffuse="ed080808">osd/osdoverlay.png</texture>

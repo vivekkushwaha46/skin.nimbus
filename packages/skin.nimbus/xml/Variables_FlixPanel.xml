@@ -178,7 +178,7 @@
 		<value condition="String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true) + !String.EndsWith(Container.PluginCategory,Collection) + [Container.Content(movies) + String.IsEqual(Skin.String(ListArtworkChoice.movies),2)]"> • [COLOR unfocused_text]Collection[/COLOR]</value>
 	</variable> -->
 	<variable name="RI_MovieCollection">
-    <value condition="[!String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true) + [Container.Content(movies) + String.IsEqual(Skin.String(ListArtworkChoice.movies),2)]">$VAR[CollectionLabel]</value>
+    <value condition="[ !String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true) + [Container.Content(movies) + String.IsEqual(Skin.String(ListArtworkChoice.movies),2)]">$VAR[CollectionLabel]</value>
 	</variable>
 	<variable name="CollectionLabel">
     <value condition="String.IsEqual(Window(Home).Property(nimbus.first_in_collection),true)"> • [COLOR unfocused_text]1|Collection[/COLOR]</value>
@@ -196,13 +196,13 @@
 	</variable>
 	<!-- Total Seasons -->
 	<variable name="RI_TotalSeasons">
-		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsEqual(Container.ListItem.Property(TotalSeasons),1)"> • [COLOR unfocused_text]$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36904]][/COLOR]</value>
-		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsGreater(Container.ListItem.Property(TotalSeasons),1)"> • [COLOR unfocused_text]$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]][/COLOR]</value>
+		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsEqual(Container.ListItem.Property(TotalSeasons),1)"> • [COLOR unfocused_text]$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36904] ][/COLOR]</value>
+		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsGreater(Container.ListItem.Property(TotalSeasons),1)"> • [COLOR unfocused_text]$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905] ][/COLOR]</value>
 	</variable>
 	<!-- Total Seasons -->
 	<variable name="I_Available">
-		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsEqual(ListItem.Property(TotalSeasons),1)">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36904]]$INFO[ListItem.Property(TotalEpisodes), (, $LOCALIZE[20453])]</value>
-		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]$INFO[ListItem.Property(TotalEpisodes), (, $LOCALIZE[20453])]</value>
+		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsEqual(ListItem.Property(TotalSeasons),1)">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36904] ]$INFO[ListItem.Property(TotalEpisodes), (, $LOCALIZE[20453])]</value>
+		<value condition="!String.IsEmpty(ListItem.Property(TotalSeasons)) + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905] ]$INFO[ListItem.Property(TotalEpisodes), (, $LOCALIZE[20453])]</value>
 	</variable>
 	<!-- Status -->
 	<variable name="TVShowStatusIcon">
@@ -227,7 +227,7 @@
     <value condition="$EXP[isMovie] + Integer.IsEqual(ListItem.Duration(h),0) + Integer.IsGreater(ListItem.Duration(m),1)"> • [COLOR unfocused_text]$INFO[ListItem.Duration(m),, mins][/COLOR]</value>
     <value condition="$EXP[isMovie] + Integer.IsEqual(ListItem.Duration(h),0) + Integer.IsEqual(ListItem.Duration(m),1)"> • [COLOR unfocused_text]1 min[/COLOR]</value>
     <!-- TVSHOWS, SEASONS, EPISODES -->
-    <value condition="[$EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode]] + !String.IsEmpty(ListItem.Duration)"> • [COLOR unfocused_text]$INFO[ListItem.Duration(mins),, mins][/COLOR]</value>
+    <value condition="[$EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] ] + !String.IsEmpty(ListItem.Duration)"> • [COLOR unfocused_text]$INFO[ListItem.Duration(mins),, mins][/COLOR]</value>
 	</variable>
 	<variable name="RI_EpisodeType">
 		<value condition="String.IsEqual(ListItem.Property(episode_type), series_premiere)"> • [COLOR unfocused_text]Series Premiere[/COLOR]</value>
@@ -240,11 +240,11 @@
 	
 	<variable name="RI_EpisodesRemaining">
 		<value condition="Integer.IsGreater(ListItem.Property(WatchedEpisodes),0) + !String.IsEqual(ListItem.Property(WatchedEpisodes),ListItem.Property(TotalEpisodes)) + !String.IsEqual(ListItem.Property(UnWatchedEpisodes),-1)"> • [COLOR unfocused_text]$INFO[ListItem.Property(UnwatchedEpisodes),, remaining][/COLOR]</value>
-		<!-- <value condition="!String.IsEmpty(ListItem.Duration) + [$EXP[isTVShow] |  $EXP[isSeason] |  $EXP[isEpisode]]">$INFO[ListItem.Duration(mins), • ,m]</value> -->
+		<!-- <value condition="!String.IsEmpty(ListItem.Duration) + [$EXP[isTVShow] |  $EXP[isSeason] |  $EXP[isEpisode] ]">$INFO[ListItem.Duration(mins), • ,m]</value> -->
 	</variable>
 	<variable name="RI_SeasonEpisode">
 		<value condition="!String.StartsWith(Container.PluginCategory,Season)"> • [COLOR unfocused_text]$INFO[Container($PARAM[list_id]).ListItem.Season,,]$INFO[Container($PARAM[list_id]).ListItem.Episode,x,][/COLOR]</value>
-		<!-- <value condition="!String.IsEmpty(ListItem.Duration) + [$EXP[isTVShow] |  $EXP[isSeason] |  $EXP[isEpisode]]">$INFO[ListItem.Duration(mins), • ,m]</value> -->
+		<!-- <value condition="!String.IsEmpty(ListItem.Duration) + [$EXP[isTVShow] |  $EXP[isSeason] |  $EXP[isEpisode] ]">$INFO[ListItem.Duration(mins), • ,m]</value> -->
 	</variable>
 	
 	
@@ -279,7 +279,7 @@
 	
 	<variable name="InfoPanelBottom">
 		<!-- MOVIES, TVSHOWS, SEASONS, EPISODES, COLLECTIONS -->
-		<value condition="!ListItem.IsCollection + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode]]">$VAR[RI_Plot]</value>
+		<value condition="!ListItem.IsCollection + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] ]">$VAR[RI_Plot]</value>
 	</variable>
 
 	<variable name="FlixPanelRuntime">
@@ -293,7 +293,7 @@
     <value condition="$EXP[isMovie] + !String.IsEqual(Container.PluginName,flixify.com) + Integer.IsEqual(ListItem.Duration(h),0) + Integer.IsGreater(ListItem.Duration(m),1)">$INFO[ListItem.Duration(m),, mins]</value>
     <!-- <value condition="$EXP[isMovie] + Integer.IsEqual(ListItem.Duration(h),0) + Integer.IsEqual(ListItem.Duration(m),1)">1 min</value> -->
     <!-- TVSHOWS, SEASONS, EPISODES -->
-    <value condition="!String.IsEqual(Container.PluginName,flixify.com) + [$EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode]]">$INFO[ListItem.Duration(mins),, mins]</value>
+    <value condition="!String.IsEqual(Container.PluginName,flixify.com) + [$EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] ]">$INFO[ListItem.Duration(mins),, mins]</value>
 
 
     <!-- MOVIES -->
@@ -306,7 +306,7 @@
     <value condition="String.IsEqual(Container.PluginName,flixify.com) + Integer.IsEqual(ListItem.Duration(h),0) + Integer.IsGreater(ListItem.Duration(m),1)">$INFO[ListItem.Duration(m),, mins]</value>
     <!-- <value condition="$EXP[isMovie] + Integer.IsEqual(ListItem.Duration(h),0) + Integer.IsEqual(ListItem.Duration(m),1)">1 min</value> -->
     <!-- TVSHOWS, SEASONS, EPISODES -->
-    <!-- <value condition="!String.IsEqual(Container.PluginName,flixify.com) + [$EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode]]">$INFO[ListItem.Duration(mins),, mins]</value> -->
+    <!-- <value condition="!String.IsEqual(Container.PluginName,flixify.com) + [$EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] ]">$INFO[ListItem.Duration(mins),, mins]</value> -->
 	</variable>
 
 	<variable name="EpisodeType">
@@ -365,8 +365,8 @@
 	</variable>
 
 	<variable name="FlixIconColor">
-    <value condition="!Skin.HasSetting(Enable.BackgroundBlur) + !Control.IsVisible(51) + ![String.IsEqual(Skin.String(ArtworkChoice.movies),1) | String.IsEqual(Skin.String(ArtworkChoice.tvshows),1) | String.IsEqual(Skin.String(ArtworkChoice.seasons),1) | String.IsEqual(Skin.String(ArtworkChoice.episodes),1) | String.IsEqual(Skin.String(HomeArtworkChoice),1)]">FF2E2E2E</value>
-    <value condition="Skin.HasSetting(Enable.BackgroundBlur) | [!Skin.HasSetting(Enable.BackgroundBlur) + [String.IsEqual(Skin.String(ArtworkChoice.movies),1) | String.IsEqual(Skin.String(ArtworkChoice.tvshows),1) | String.IsEqual(Skin.String(ArtworkChoice.seasons),1) | String.IsEqual(Skin.String(ArtworkChoice.episodes),1) | String.IsEqual(Skin.String(HomeArtworkChoice),1)] | Control.IsVisible(51)]">26CCCCCC</value>
+    <value condition="!Skin.HasSetting(Enable.BackgroundBlur) + !Control.IsVisible(51) + ! [String.IsEqual(Skin.String(ArtworkChoice.movies),1) | String.IsEqual(Skin.String(ArtworkChoice.tvshows),1) | String.IsEqual(Skin.String(ArtworkChoice.seasons),1) | String.IsEqual(Skin.String(ArtworkChoice.episodes),1) | String.IsEqual(Skin.String(HomeArtworkChoice),1)]">FF2E2E2E</value>
+    <value condition="Skin.HasSetting(Enable.BackgroundBlur) | [ !Skin.HasSetting(Enable.BackgroundBlur) + [String.IsEqual(Skin.String(ArtworkChoice.movies),1) | String.IsEqual(Skin.String(ArtworkChoice.tvshows),1) | String.IsEqual(Skin.String(ArtworkChoice.seasons),1) | String.IsEqual(Skin.String(ArtworkChoice.episodes),1) | String.IsEqual(Skin.String(HomeArtworkChoice),1)] | Control.IsVisible(51)]">26CCCCCC</value>
 	</variable>
 
 </includes>

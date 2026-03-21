@@ -180,7 +180,7 @@
 						<param name="control_id" value="150" />
 						<param name="label" value="$LOCALIZE[515]: $INFO[ListItem.Genre]" />
 						<param name="altlabel" value="$LOCALIZE[515]: $INFO[ListItem.Genre]" />
-						<param name="visible" value="!String.IsEmpty(ListItem.Genre) + [String.IsEqual(ListItem.DBType,musicvideo) | $EXP[isMovie]]" />
+						<param name="visible" value="!String.IsEmpty(ListItem.Genre) + [String.IsEqual(ListItem.DBType,musicvideo) | $EXP[isMovie] ]" />
 					</include>
 					<include content="InfoDialogMetadata">
 						<param name="control_id" value="152" />
@@ -202,8 +202,8 @@
 					</include>
 					<include content="InfoDialogMetadata">
 						<param name="control_id" value="155" />
-						<param name="label" value="[COLOR button_focus2]$LOCALIZE[31048]: $INFO[ListItem.Season,, $LOCALIZE[36905]]$INFO[ListItem.Episode, (, $LOCALIZE[20453])][/COLOR]" />
-						<param name="altlabel" value="$LOCALIZE[31048]: $INFO[ListItem.Season,, $LOCALIZE[36905]]$INFO[ListItem.Episode, (, $LOCALIZE[20453])]" />
+						<param name="label" value="[COLOR button_focus2]$LOCALIZE[31048]: $INFO[ListItem.Season,, $LOCALIZE[36905] ]$INFO[ListItem.Episode, (, $LOCALIZE[20453])][/COLOR]" />
+						<param name="altlabel" value="$LOCALIZE[31048]: $INFO[ListItem.Season,, $LOCALIZE[36905] ]$INFO[ListItem.Episode, (, $LOCALIZE[20453])]" />
 						<param name="visible" value="!String.IsEmpty(ListItem.Season) + !$EXP[isEpisode]" />
 					</include>
 					<include content="InfoDialogMetadata">
@@ -234,7 +234,7 @@
 						<param name="control_id" value="161" />
 						<param name="label" value="$LOCALIZE[570]: $INFO[ListItem.DateAdded]" />
 						<param name="altlabel" value="$LOCALIZE[570]: $INFO[ListItem.DateAdded]" />
-						<param name="visible" value="!String.IsEmpty(ListItem.DateAdded) + [$EXP[isEpisode] | $EXP[isMovie] | String.IsEqual(ListItem.DBType,musicvideo) | $EXP[isVideo]]" />
+						<param name="visible" value="!String.IsEmpty(ListItem.DateAdded) + [$EXP[isEpisode] | $EXP[isMovie] | String.IsEqual(ListItem.DBType,musicvideo) | $EXP[isVideo] ]" />
 					</include>
 					<include content="InfoDialogMetadata">
 						<param name="control_id" value="163" />
@@ -512,7 +512,7 @@
 						<param name="id" value="11" />
 						<param name="icon" value="icons/infodialogs/trailer.png" />
 						<param name="label" value="$LOCALIZE[20410]" />
-						<param name="visible" value="!String.IsEmpty(ListItem.Trailer) + ![$EXP[isPlugin] + String.Contains(Container.FolderPath,trailer)]" />
+						<param name="visible" value="!String.IsEmpty(ListItem.Trailer) + ! [$EXP[isPlugin] + String.Contains(Container.FolderPath,trailer)]" />
 					</include>
 					<include content="InfoDialogButton">
 						<param name="id" value="441" />
@@ -520,7 +520,7 @@
 						<param name="onclick_1" value="Dialog.Close(MovieInformation)" />
 						<param name="onclick_2" value="RunScript(script.cinemavision,experience)" />
 						<param name="label" value="$LOCALIZE[31003]" />
-						<param name="visible" value="System.AddonIsEnabled(script.cinemavision) + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode]]" />
+						<param name="visible" value="System.AddonIsEnabled(script.cinemavision) + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] ]" />
 					</include>
 					<control type="group" id="400">
 						<width>227</width>
@@ -589,7 +589,7 @@
 						<param name="onclick_2" value="RunScript(script.embuary.info,call=tv,dbid=$INFO[ListItem.DBID])" />
 						<param name="onclick_3_condition" value="!String.IsEmpty(ListItem.DBID) + $EXP[isEpisode]" />
 						<param name="onclick_3" value="RunScript(script.embuary.info,call=tv,query='$ESCINFO[ListItem.TVShowTitle]',year=$INFO[ListItem.Year])" />
-						<param name="visible" value="System.AddonIsEnabled(script.embuary.info) + !String.IsEmpty(ListItem.DBID) + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isEpisode]]" />
+						<param name="visible" value="System.AddonIsEnabled(script.embuary.info) + !String.IsEmpty(ListItem.DBID) + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isEpisode] ]" />
 					</include>
 					<include content="InfoDialogButton">
 						<param name="id" value="102" />

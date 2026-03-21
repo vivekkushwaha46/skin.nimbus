@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="FlixPanel">
-		<param name="excluded_adddons">![String.StartsWith(ListItem.Path,plugin://plugin.video.dramacool) | String.StartsWith(ListItem.Path,plugin://plugin.program.iagl) | String.StartsWith(ListItem.Path,plugin://plugin.flixify.com) | String.StartsWith(ListItem.Path,plugin://plugin.video.mediafusion)]</param>
+		<param name="excluded_adddons">! [String.StartsWith(ListItem.Path,plugin://plugin.video.dramacool) | String.StartsWith(ListItem.Path,plugin://plugin.program.iagl) | String.StartsWith(ListItem.Path,plugin://plugin.flixify.com) | String.StartsWith(ListItem.Path,plugin://plugin.video.mediafusion)]</param>
 		<param name="text_visible">
 				[
 						!String.StartsWith(ListItem.Path,plugin://plugin.video.umbrella) + 
@@ -19,7 +19,7 @@
 		</param>
 		<definition>
 			<control type="group">
-				<visible>!Control.IsVisible(50) + [!Player.HasVideo | !$EXP[sidebar_visible]]</visible>
+				<visible>!Control.IsVisible(50) + [ !Player.HasVideo | !$EXP[sidebar_visible] ]</visible>
 				<left>50</left>
 				<width>815</width>
 				<top>45</top>
@@ -33,7 +33,7 @@
 				<control type="group">
 					<height>263</height>
 					<width>600</width>
-					<visible>[!Skin.HasSetting(Enable.Clearlogo) | [String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(Container.ListItem.Art(tvshow.clearlogo))]] + $PARAM[text_visible]</visible>
+					<visible>[ !Skin.HasSetting(Enable.Clearlogo) | [String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(Container.ListItem.Art(tvshow.clearlogo))] ] + $PARAM[text_visible]</visible>
 					<control type="textbox">
 						<aligny>center</aligny>
 						<font>font52_title</font>
@@ -77,7 +77,7 @@
 						<itemgap>12</itemgap>
 						<aligny>center</aligny>
 						<align>left</align>
-						<visible>![Window.IsVisible(dialogbusy) | Player.HasMedia] + String.IsEmpty(Skin.String(TrailerPlaying)) + !String.IsEmpty(ListItem.Genre)</visible>
+						<visible>! [Window.IsVisible(dialogbusy) | Player.HasMedia] + String.IsEmpty(Skin.String(TrailerPlaying)) + !String.IsEmpty(ListItem.Genre)</visible>
 						<!-- <include content="FlixInfoIcon">
 							<param name="flixlabel" value="$INFO[Container($PARAM[id]).ListItem.Premiered]"/>
 							<param name="visible" value="!String.IsEmpty(Container($PARAM[id]).ListItem.Premiered) + !ListItem.IsCollection"/>
@@ -142,7 +142,7 @@
 						<control type="group">
 							<width>35</width>
 							<height>35</height>
-							<visible>[!String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true)</visible>
+							<visible>[ !String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true)</visible>
 							<animation effect="fade" time="300">VisibleChange</animation>
 							<control type="image">
 								<top>6</top>
@@ -212,7 +212,7 @@
 						<font>font27</font>
 						<textcolor>unfocused_text</textcolor>
 						<autoscroll delay="8000" time="3000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
-						<visible>!Player.HasMedia + [String.IsEmpty(Skin.String(valid_api_key)) | $PARAM[api_disabled]]
+						<visible>!Player.HasMedia + [String.IsEmpty(Skin.String(valid_api_key)) | $PARAM[api_disabled] ]
 						</visible>
 					</control> -->
 				</control>

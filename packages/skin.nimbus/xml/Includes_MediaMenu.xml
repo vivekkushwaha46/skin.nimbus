@@ -225,7 +225,7 @@
 						<onup>302</onup>
 						<ondown>6056</ondown>
 						<align>center</align>
-						<visible>Player.HasMedia + [$EXP[sidebar_visible]]</visible>
+						<visible>Player.HasMedia + [$EXP[sidebar_visible] ]</visible>
 						<visible>!System.HasActiveModalDialog</visible>
 						<include content="BottomMainMenuToggleItem">
 							<param name="control_id" value="14101" />
@@ -326,7 +326,7 @@
 				<left>$PARAM[left]</left>
 				<onleft>14100</onleft>
 				<width>450</width>
-				<visible>Player.HasMedia + [$EXP[sidebar_visible]]</visible>
+				<visible>Player.HasMedia + [$EXP[sidebar_visible] ]</visible>
 				<visible>!System.HasActiveModalDialog</visible>
 				<align>center</align>
 				<include content="BottomMainMenuToggleItem">
@@ -363,7 +363,7 @@
 			<height>970</height>
 			<onleft>9000</onleft>
 			<onup>9000</onup>
-			<onright condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">50</onright>
+			<onright condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">50</onright>
 			<onright condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">56</onright>
 			<ondown>9000</ondown>
 			<onback>50</onback>
@@ -510,7 +510,7 @@
 				<label>    - Use</label>
 				<label2>[B]$VAR[LandscapeFanartSettingVar][/B]</label2>
 				<onclick>$VAR[LandscapeFanartToggleVar]</onclick>
-				<visible>![Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(501)] + [[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)]]</visible>
+				<visible>! [Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(501)] + [ [Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | [Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | [Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)] ]</visible>
 			</control>
 			<control type="button" id="6061">
 				<include>MediaMenuItemsCommon</include>
@@ -540,7 +540,7 @@
 				<label>On down action</label>
 				<label2>[B]$VAR[OnDownSettingVar.MovieTV][/B]</label2>
 				<onclick>$VAR[OnDownToggleVar.MovieTV]</onclick>
-				<visible>[Control.IsVisible(54) | Control.IsVisible(55)] + [[Container.Content(movies) + !String.StartsWith(Container.PluginName,plugin.video.the-loop)] | Container.Content(tvshows)]</visible>
+				<visible>[Control.IsVisible(54) | Control.IsVisible(55)] + [ [Container.Content(movies) + !String.StartsWith(Container.PluginName,plugin.video.the-loop)] | Container.Content(tvshows)]</visible>
 			</control>
 			<control type="button" id="6064">
 				<include>MediaMenuItemsCommon</include>
@@ -589,7 +589,7 @@
 				<label>On down action</label>
 				<label2>[B]$VAR[PosterFlowOnDownSettingVar.MovieTV][/B]</label2>
 				<onclick>$VAR[PosterFlowOnDownToggleVar.MovieTV]</onclick>
-				<visible>Control.IsVisible(51) + [[Container.Content(movies) + !String.StartsWith(Container.PluginName,plugin.video.the-loop)] | Container.Content(tvshows)]</visible>
+				<visible>Control.IsVisible(51) + [ [Container.Content(movies) + !String.StartsWith(Container.PluginName,plugin.video.the-loop)] | Container.Content(tvshows)]</visible>
 			</control>
 			<control type="button" id="6071">
 				<include>MediaMenuItemsCommon</include>
@@ -603,7 +603,7 @@
 				<label>On right action</label>
 				<label2>[B]$VAR[OnRightSettingVar.MovieTV][/B]</label2>
 				<onclick>$VAR[OnRightToggleVar.MovieTV]</onclick>
-				<visible>Control.IsVisible(50) + [[Container.Content(movies) + !String.StartsWith(Container.PluginName,plugin.video.the-loop)] | Container.Content(tvshows)]</visible>
+				<visible>Control.IsVisible(50) + [ [Container.Content(movies) + !String.StartsWith(Container.PluginName,plugin.video.the-loop)] | Container.Content(tvshows)]</visible>
 			</control>
 			<control type="button" id="6073">
 				<include>MediaMenuItemsCommon</include>

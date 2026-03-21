@@ -7,7 +7,7 @@
       <texturenofocus/>
     </control>
     <control type="button" id="8">
-      <!-- <visible>[$EXP[isMovie] | $EXP[isEpisode]]</visible> -->
+      <!-- <visible>[$EXP[isMovie] | $EXP[isEpisode] ]</visible> -->
       <texturefocus/>
       <texturenofocus/>
     </control>
@@ -138,7 +138,7 @@
               <height>233</height>
               <texture colordiffuse="artwork_dim" background="true">$VAR[ClearlogoVar]</texture>
               <aspectratio align="center">keep</aspectratio>
-              <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) + Skin.HasSetting(Enable.Clearlogo)] + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] | Container.Content(addons)]</visible>
+              <visible>[ !String.IsEmpty(ListItem.Art(clearlogo)) + Skin.HasSetting(Enable.Clearlogo)] + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | $EXP[isEpisode] | Container.Content(addons)]</visible>
             </control>
             <control type="textbox">
               <top>0</top>
@@ -340,7 +340,7 @@
               <item>
                 <label>$LOCALIZE[570]</label>
                 <label2>$INFO[ListItem.DateAdded]</label2>
-                <visible>!String.IsEmpty(ListItem.DateAdded) + [$EXP[isEpisode] | $EXP[isMovie] | String.IsEqual(ListItem.DBType,musicvideo) | $EXP[isVideo]]</visible>
+                <visible>!String.IsEmpty(ListItem.DateAdded) + [$EXP[isEpisode] | $EXP[isMovie] | String.IsEqual(ListItem.DBType,musicvideo) | $EXP[isVideo] ]</visible>
               </item>
               <item>
                 <label>$LOCALIZE[576]</label>

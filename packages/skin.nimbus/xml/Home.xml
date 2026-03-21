@@ -23,65 +23,65 @@
 			<visible>
 				[
 					[ControlGroup(2000).HasFocus | Control.HasFocus(20000) | Control.HasFocus(20001)] + 
-					[!Player.HasVideo + ![Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)] + 
+					[ !Player.HasVideo + ! [Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)] + 
 					String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))]
 				] | 
 				[
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),movies) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_movies_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_movies))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_movies_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_movies))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),tvshows) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_tvshows_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_tvshows))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_tvshows_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_tvshows))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),custom1) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_custom1_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom1))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_custom1_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom1))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),custom2) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_custom2_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom2))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_custom2_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom2))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),custom3) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_custom3_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom3))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_custom3_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom3))]
 					] | 
 					[
 					String.IsEqual(Container(9000).ListItem.Property(id),music) + 
-					[!String.IsEmpty(Window(Home).Property(nimbus_music_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_music))]
+					[ !String.IsEmpty(Window(Home).Property(nimbus_music_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_music))]
 					] | 
 					[
 					String.IsEqual(Container(9000).ListItem.Property(id),musicvideos) + 
-					[!String.IsEmpty(Window(Home).Property(nimbus_musicvideos_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_musicvideos))]
+					[ !String.IsEmpty(Window(Home).Property(nimbus_musicvideos_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_musicvideos))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),livetv) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_livetv_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_livetv))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_livetv_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_livetv))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),radio) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_radio_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_radio))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_radio_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_radio))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),addons) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_addons_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_addons))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_addons_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_addons))]
 					] | 
 					[
 					String.IsEqual(Container(9000).ListItem.Property(id),pictures) + 
-					[!String.IsEmpty(Window(Home).Property(nimbus_pictures_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_pictures))]
+					[ !String.IsEmpty(Window(Home).Property(nimbus_pictures_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_pictures))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),video) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_videos_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_videos))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_videos_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_videos))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),games) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_games_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_games))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_games_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_games))]
 					] | 
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),weather) + 
-						[!String.IsEmpty(Window(Home).Property(nimbus_weather_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_weather))]
+						[ !String.IsEmpty(Window(Home).Property(nimbus_weather_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_weather))]
 					]
 				]
 			</visible>

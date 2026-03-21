@@ -392,7 +392,7 @@
       <orientation>horizontal</orientation>
       <itemgap>5</itemgap>
       <align>left</align>
-      <visible>[!String.IsEqual(Skin.String($PARAM[rating_slot]),none) + 
+      <visible>[ !String.IsEqual(Skin.String($PARAM[rating_slot]),none) + 
         [
             [String.IsEqual(Skin.String($PARAM[rating_slot]),metacritic) + !String.IsEmpty(Window(Home).Property(nimbus.metascore))] | 
             [String.IsEqual(Skin.String($PARAM[rating_slot]),trakt) + !String.IsEmpty(Window(Home).Property(nimbus.traktRating))] |
@@ -448,7 +448,7 @@
 		<param name="left"></param>
 		<param name="visible">!String.IsEmpty(ListItem.Genre) + !Player.HasMedia + [$EXP[isMovie] | $EXP[isTVShow] | $EXP[isSeason] | String.StartsWith(ListItem.Path,plugin://plugin.video.mediafusion)] + 
 		[
-			[[Window.IsVisible(Home) | Window.IsVisible(1121)] + !Skin.HasSetting(Disable.AutoInfoRatings)] | [Control.IsVisible(51) + !Skin.HasSetting(Disable.51Ratings)] | [Control.IsVisible(53) + !Skin.HasSetting(Disable.53Ratings)] | [Control.IsVisible(54) + !Skin.HasSetting(Disable.54Ratings)] | [Control.IsVisible(55) + !Skin.HasSetting(Disable.55Ratings)] | [Control.IsVisible(56) + !Skin.HasSetting(Disable.56Ratings)]
+			[ [Window.IsVisible(Home) | Window.IsVisible(1121)] + !Skin.HasSetting(Disable.AutoInfoRatings)] | [Control.IsVisible(51) + !Skin.HasSetting(Disable.51Ratings)] | [Control.IsVisible(53) + !Skin.HasSetting(Disable.53Ratings)] | [Control.IsVisible(54) + !Skin.HasSetting(Disable.54Ratings)] | [Control.IsVisible(55) + !Skin.HasSetting(Disable.55Ratings)] | [Control.IsVisible(56) + !Skin.HasSetting(Disable.56Ratings)]
 		] + 
 		[
 			[String.IsEqual(Skin.String(RatingSlot1),metacritic) + !String.IsEmpty(Window(Home).Property(nimbus.metascore))] | 
@@ -553,7 +553,7 @@
 					<texture colordiffuse="$VAR[FocusColorTheme]">$VAR[CollectionStatus]</texture>
 					<!-- <animation effect="fade" time="300">VisibleChange</animation> -->
 					<visible>Control.IsVisible(50) + !$EXP[infodialog_active] + 
-						[!String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + 
+						[ !String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + 
 						String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true) + 
 						[
 								[String.IsEqual(Skin.String(RatingSlot1),metacritic) + !String.IsEmpty(Window(Home).Property(nimbus.metascore))] | 
@@ -624,7 +624,7 @@
       <orientation>vertical</orientation>
       <itemgap>10</itemgap>
       <align>center</align>
-      <visible>[!String.IsEqual(Skin.String($PARAM[rating_slot]),none) + 
+      <visible>[ !String.IsEqual(Skin.String($PARAM[rating_slot]),none) + 
           [
               [String.IsEqual(Skin.String($PARAM[rating_slot]),metacritic) + !String.IsEmpty(Window(Home).Property(nimbus.metascore))] | 
               [String.IsEqual(Skin.String($PARAM[rating_slot]),trakt) + !String.IsEmpty(Window(Home).Property(nimbus.traktRating))] |
@@ -707,7 +707,7 @@
       <texture colordiffuse="$VAR[FocusColorTheme]">$VAR[CollectionStatus]</texture>
       <!-- <animation effect="fade" time="300">VisibleChange</animation> -->
       <visible>
-        [!String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + 
+        [ !String.EndsWith(Container.PluginCategory,Collection) + !String.EndsWith(Container.PluginCategory,Saga) | String.IsEqual(Container.PluginCategory,Movies Collection)] + 
         String.IsEqual(Window(Home).Property(nimbus.belongs_to_collection),true) + 
         [
             [String.IsEqual(Skin.String(RatingSlot1),metacritic) + !String.IsEmpty(Window(Home).Property(nimbus.metascore))] | 

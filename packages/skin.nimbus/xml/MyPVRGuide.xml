@@ -190,14 +190,14 @@
 							<width>30%</width>
 							<height>30</height>
 							<align>right</align>
-							<label>[COLOR button_focus]$INFO[ListItem.StartTime,[COLOR grey]$LOCALIZE[555]:[/COLOR] ][/COLOR]$INFO[ListItem.EndTime,[COLOR button_focus] - ,[/COLOR]]</label>
+							<label>[COLOR button_focus]$INFO[ListItem.StartTime,[COLOR grey]$LOCALIZE[555]:[/COLOR] ][/COLOR]$INFO[ListItem.EndTime,[COLOR button_focus] - ,[/COLOR] ]</label>
 							<textcolor>unfocused_text</textcolor>
 						</control>
 						<control type="label">
 							<top>35</top>
 							<width>60%</width>
 							<height>30</height>
-							<label>$VAR[FlagDashLabel][I][COLOR grey]$VAR[SeasonEpisodeLabel][/COLOR]$INFO[ListItem.EpisodeName,[COLOR white],[/COLOR]][/I]</label>
+							<label>$VAR[FlagDashLabel][I][COLOR grey]$VAR[SeasonEpisodeLabel][/COLOR]$INFO[ListItem.EpisodeName,[COLOR white],[/COLOR] ][/I]</label>
 							<textcolor>unfocused_text</textcolor>
 						</control>
 						<control type="label">

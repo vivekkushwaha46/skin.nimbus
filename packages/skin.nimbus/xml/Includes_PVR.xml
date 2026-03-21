@@ -566,7 +566,7 @@
 			<left>50</left>
 			<top>$PARAM[top]</top>
 			<!-- <visible>Window.IsVisible(Home) | Control.IsVisible(50) + !ListItem.IsFolder</visible> -->
-			<visible>Window.IsVisible(Home) | Control.IsVisible(50) + !ListItem.IsFolder + [!Player.HasVideo | !$EXP[sidebar_visible]]</visible>
+			<visible>Window.IsVisible(Home) | Control.IsVisible(50) + !ListItem.IsFolder + [ !Player.HasVideo | !$EXP[sidebar_visible] ]</visible>
 			<control type="image">
 				<top>50</top>
 				<left>0</left>
@@ -597,7 +597,7 @@
 					<aligny>center</aligny>
 					<align>left</align>
 					<visible>!Player.HasMedia</visible>
-					<!-- <visible>![Window.IsVisible(dialogbusy) | Player.HasMedia] + $EXP[isContent] + !String.IsEmpty(ListItem.Genre)</visible> -->
+					<!-- <visible>! [Window.IsVisible(dialogbusy) | Player.HasMedia] + $EXP[isContent] + !String.IsEmpty(ListItem.Genre)</visible> -->
 					<include content="FlixInfoIcon">
 						<param name="visible" value="!String.IsEmpty(ListItem.Label) + !String.IsEmpty(ListItem.StartDate)"/>
 						<param name="flixlabel" value="$INFO[ListItem.StartDate]"/>
@@ -677,7 +677,7 @@
 				<width>830</width>
 				<height>200</height>
 				<!-- <bottom>625</bottom> -->
-				<label>$VAR[FlagLabel,,[CR]]$INFO[ListItem.TimerType,[COLOR grey]$LOCALIZE[803]:[/COLOR] ,[CR]]$VAR[RecordingSizeLabel]$VAR[ExpirationDateTimeLabel]$INFO[ListItem.Plot,[CR]]</label>
+				<label>$VAR[FlagLabel,,[CR] ]$INFO[ListItem.TimerType,[COLOR grey]$LOCALIZE[803]:[/COLOR] ,[CR] ]$VAR[RecordingSizeLabel]$VAR[ExpirationDateTimeLabel]$INFO[ListItem.Plot,[CR] ]</label>
 				<font>font27</font>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(AutoScroll)</autoscroll>
@@ -688,7 +688,7 @@
 				<width>550</width>
 				<height>200</height>
 				<!-- <bottom>625</bottom> -->
-				<label>$VAR[FlagLabel,,[CR]]$INFO[ListItem.TimerType,[COLOR grey]$LOCALIZE[803]:[/COLOR] ,[CR]]$VAR[RecordingSizeLabel]$VAR[ExpirationDateTimeLabel]$INFO[ListItem.Plot,[CR]]</label>
+				<label>$VAR[FlagLabel,,[CR] ]$INFO[ListItem.TimerType,[COLOR grey]$LOCALIZE[803]:[/COLOR] ,[CR] ]$VAR[RecordingSizeLabel]$VAR[ExpirationDateTimeLabel]$INFO[ListItem.Plot,[CR] ]</label>
 				<font>font27</font>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(AutoScroll)</autoscroll>
@@ -708,7 +708,7 @@
 					<scroll>true</scroll>
 					<scrollspeed>100</scrollspeed>
 					<font>font27</font>
-					<visible>!Window.IsVisible(Home) + ![Player.HasMedia | Window.IsVisible(10702)]</visible>
+					<visible>!Window.IsVisible(Home) + ! [Player.HasMedia | Window.IsVisible(10702)]</visible>
 				</control>
 				<control type="label">
 					<top>505</top>
@@ -735,7 +735,7 @@
 					<aligny>center</aligny>
 					<wrapmultiline>true</wrapmultiline>
 					<font>font27</font>
-					<visible>![Window.IsVisible(Home) | Window.IsVisible(10702)]</visible>
+					<visible>! [Window.IsVisible(Home) | Window.IsVisible(10702)]</visible>
 				</control>
 				<control type="label">
 					<include>OpenClose_Right</include>
@@ -760,7 +760,7 @@
 				<top>10</top>
 				<width>830</width>
 				<height>262</height>
-				<label>$LOCALIZE[19076] ($INFO[Container(5000).NumItems,[B],[/B] $LOCALIZE[31036]]) $INFO[ListItem.Property(recordingsize),- $LOCALIZE[20161]: [B],[/B]]</label>
+				<label>$LOCALIZE[19076] ($INFO[Container(5000).NumItems,[B],[/B] $LOCALIZE[31036] ]) $INFO[ListItem.Property(recordingsize),- $LOCALIZE[20161]: [B],[/B] ]</label>
 				<font>font37</font>
 				<visible>!ListItem.IsParentFolder</visible>
 			</control>
@@ -816,7 +816,7 @@
 				<height>40</height>
 				<align>right</align>
 				<aligny>center</aligny>
-				<label>$INFO[$PARAM[value]]</label>
+				<label>$INFO[$PARAM[value] ]</label>
 				<scroll>true</scroll>
 			</control>
 		</control>

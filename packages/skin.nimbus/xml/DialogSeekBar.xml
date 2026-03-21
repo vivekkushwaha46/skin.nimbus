@@ -2,7 +2,7 @@
 <window>
   <visible>
     [Window.IsActive(fullscreenvideo) | Window.IsActive(visualisation)] + 
-    ![Window.IsActive(sliderdialog) | Window.IsActive(pvrosdchannels) | Window.IsActive(pvrchannelguide) | Window.IsActive(pvrguideinfo) | Window.IsActive(1110)] + 
+    ! [Window.IsActive(sliderdialog) | Window.IsActive(pvrosdchannels) | Window.IsActive(pvrchannelguide) | Window.IsActive(pvrguideinfo) | Window.IsActive(1110)] + 
     [
       Player.Seeking | 
       Player.Forwarding | 

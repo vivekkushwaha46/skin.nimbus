@@ -81,13 +81,13 @@
 						<width>12</width>
 						<texturesliderbar colordiffuse="$VAR[MenuSelectorColor]">colors/white.png</texturesliderbar>
 						<texturesliderbarfocus colordiffuse="$VAR[MenuSelectorColor]">colors/white.png</texturesliderbarfocus>
-						<onleft condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">9000</onleft>
+						<onleft condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">9000</onleft>
 						<onleft condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">9000</onleft>
-						<onright condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">52</onright>
+						<onright condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">52</onright>
 						<onright condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">52</onright>
 						<orientation>vertical</orientation>
 						<texturesliderbackground />
-						<animation effect="zoom" end="50,100" time="300" tween="sine" center="35,0" easing="inout" condition="![Container.Scrolling | Control.HasFocus(530)]">conditional</animation>
+						<animation effect="zoom" end="50,100" time="300" tween="sine" center="35,0" easing="inout" condition="! [Container.Scrolling | Control.HasFocus(530)]">conditional</animation>
 						<visible>Control.IsVisible(52)</visible>
 					</control>
 					<control type="scrollbar" id="531">
@@ -97,13 +97,13 @@
 						<width>12</width>
 						<texturesliderbar colordiffuse="$VAR[MenuSelectorColor]">colors/white.png</texturesliderbar>
 						<texturesliderbarfocus colordiffuse="$VAR[MenuSelectorColor]">colors/white.png</texturesliderbarfocus>
-						<onleft condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">9000</onleft>
+						<onleft condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">9000</onleft>
 						<onleft condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">9000</onleft>
-						<onright condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">50</onright>
+						<onright condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">50</onright>
 						<onright condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">56</onright>
 						<orientation>vertical</orientation>
 						<texturesliderbackground />
-						<animation effect="zoom" end="50,100" time="300" tween="sine" center="35,0" easing="inout" condition="![Container.Scrolling | Control.HasFocus(531)]">conditional</animation>
+						<animation effect="zoom" end="50,100" time="300" tween="sine" center="35,0" easing="inout" condition="! [Container.Scrolling | Control.HasFocus(531)]">conditional</animation>
 						<visible>Control.IsVisible(56)</visible>
 					</control>
 					<control type="scrollbar" id="532">
@@ -113,13 +113,13 @@
 						<width>12</width>
 						<texturesliderbar colordiffuse="$VAR[MenuSelectorColor]">colors/white.png</texturesliderbar>
 						<texturesliderbarfocus colordiffuse="$VAR[MenuSelectorColor]">colors/white.png</texturesliderbarfocus>
-						<onleft condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">9000</onleft>
+						<onleft condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">9000</onleft>
 						<onleft condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">9000</onleft>
-						<onright condition="![Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">50</onright>
+						<onright condition="! [Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)]">50</onright>
 						<onright condition="Window.IsVisible(musicplaylist) | Window.IsVisible(videoplaylist)">56</onright>
 						<orientation>vertical</orientation>
 						<texturesliderbackground />
-						<animation effect="zoom" end="50,100" time="300" tween="sine" center="35,0" easing="inout" condition="![Container.Scrolling | Control.HasFocus(532)]">conditional</animation>
+						<animation effect="zoom" end="50,100" time="300" tween="sine" center="35,0" easing="inout" condition="! [Container.Scrolling | Control.HasFocus(532)]">conditional</animation>
 						<visible>Control.IsVisible(500) | Control.IsVisible(501)</visible>
 					</control>
 				</control>
@@ -142,7 +142,7 @@
 						<ondown condition="Control.IsVisible(55)">Container.SetViewMode(501)</ondown>
 						<orientation>horizontal</orientation>
 						<visible>Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55)</visible>
-						<animation effect="slide" end="0,6" time="300" tween="sine" easing="inout" condition="![Control.HasFocus(5199) | Container.Scrolling]">conditional</animation>
+						<animation effect="slide" end="0,6" time="300" tween="sine" easing="inout" condition="! [Control.HasFocus(5199) | Container.Scrolling]">conditional</animation>
 						<animation effect="fade" start="0" end="100" time="200" delay="300">Visible</animation>
 						<animation effect="fade" start="100" end="0" time="200">Hidden</animation>
 						<animation effect="slide" end="0,90" time="300" tween="sine" easing="inout" condition="$EXP[infodialog_active]">conditional</animation>
@@ -210,7 +210,7 @@
 			<width>44</width>
 			<height>44</height>
 			<font>font20_title</font>
-			<label>$INFO[$PARAM[infolabel]]</label>
+			<label>$INFO[$PARAM[infolabel] ]</label>
 		</control>
 	</include>
 
@@ -278,7 +278,7 @@
 				<height>40</height>
 				<align>right</align>
 				<aligny>center</aligny>
-				<label>$INFO[$PARAM[value]]</label>
+				<label>$INFO[$PARAM[value] ]</label>
 			</control>
 		</control>
 	</include>
@@ -430,7 +430,7 @@
 				<aspectratio align="center" aligny="center">keep</aspectratio>
 				<texture colordiffuse="artwork_dim">$PARAM[texture]</texture>
 				<visible>$PARAM[visible]</visible>
-				<visible>![Skin.HasSetting(TrailerPlaying) | Window.IsVisible(12003) | Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(501)]</visible>
+				<visible>! [Skin.HasSetting(TrailerPlaying) | Window.IsVisible(12003) | Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(501)]</visible>
 			</control>
 		</definition>
 	</include> -->
@@ -504,7 +504,7 @@
 				<textcolor>unfocused_text</textcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<label>$INFO[$PARAM[label]]</label>
+				<label>$INFO[$PARAM[label] ]</label>
 			</control>
 		</control>
 	</include>
@@ -672,7 +672,7 @@
 						<param name="button_onclick" value="$PARAM[imagewidget_onclick]"/>
 						<param name="button_id" value="$PARAM[group_id]333"/>
 						<param name="visible_2" value="false"/>
-						<param name="visible" value="![Integer.IsGreater(Container($PARAM[group_id]50).NumItems,0) | Container($PARAM[group_id]50).IsUpdating]"/>
+						<param name="visible" value="! [Integer.IsGreater(Container($PARAM[group_id]50).NumItems,0) | Container($PARAM[group_id]50).IsUpdating]"/>
 						<param name="button2_onclick" value="Skin.SetBool(HomeMenuNoTVShowButton)"/>
 					</include>
 				</control>
@@ -964,7 +964,7 @@
 				<!-- <animation effect="fade" start="0" end="100" time="300" condition="!Container.Scrolling">Conditional</animation> -->
 				<animation effect="fade" start="0" end="100" time="300" condition="[Window.Previous(fullscreenvideo) | Window.Previous(startup)] + !Window.IsVisible(1109)">WindowOpen</animation>
 				<!-- <animation effect="fade" start="100" end="0" time="300" condition="[Window.IsVisible(Home) | Window.IsVisible(1121)] + !Player.HasMedia | [Player.HasMedia + ControlGroup(2000).HasFocus]">Conditional</animation> -->
-				<visible>![Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)] | Window.IsVisible(extendedprogressdialog)</visible>
+				<visible>! [Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)] | Window.IsVisible(extendedprogressdialog)</visible>
 				<control type="image">
 					<!-- <visible>Window.IsVisible(extendedprogressdialog)</visible> -->
 					<left>0</left>
@@ -1019,8 +1019,8 @@
 					<orientation>horizontal</orientation>
 					<width>1100</width>
 					<itemgap>10</itemgap>
-					<!-- <visible>![Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)]</visible> -->
-					<visible>![Window.IsVisible(extendedprogressdialog) | Window.IsActive(fullscreenvideo) | !String.IsEmpty(Skin.String(TrailerPlaying))]</visible>
+					<!-- <visible>! [Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)]</visible> -->
+					<visible>! [Window.IsVisible(extendedprogressdialog) | Window.IsActive(fullscreenvideo) | !String.IsEmpty(Skin.String(TrailerPlaying))]</visible>
 					<animation effect="fade" time="150">VisibleChange</animation>
 					<control type="group">
 						<width>600</width>
@@ -1096,7 +1096,7 @@
 						<fadetime>300</fadetime>
 						<aspectratio aligny="center" align="left">keep</aspectratio>
 						<texture colordiffuse="unfocused_text">$INFO[Weather.FanartCode,weather/small/,.png]</texture>
-						<visible>Skin.HasSetting(show_weatherinfo) + Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+						<visible>Skin.HasSetting(show_weatherinfo) + Weather.IsFetched + ! [String.IsEqual(Weather.FanartCode,na)]</visible>
 					</control>
 					<control type="label">
 						<font>font45</font>
@@ -1106,7 +1106,7 @@
 						<align>right</align>
 						<label>[COLOR unfocused_text]$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits][/COLOR]  • </label>
 						<textcolor>$VAR[MenuSelectorColor]</textcolor>
-						<visible>Skin.HasSetting(show_weatherinfo) + Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+						<visible>Skin.HasSetting(show_weatherinfo) + Weather.IsFetched + ! [String.IsEqual(Weather.FanartCode,na)]</visible>
 					</control>
 					<control type="label">
 						<font>font45</font>
@@ -1177,7 +1177,7 @@
 	</include>
 
 	<include name="TopBarLabels">
-		<visible>![Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)]</visible>
+		<visible>! [Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)]</visible>
 		
 		<left>37</left>
 		<description>Left side of top bar</description>
@@ -1201,8 +1201,8 @@
 		<control type="label">
 			<label> [B]»[/B] [COLOR unfocused_text]$INFO[Container.FolderName][/COLOR]</label>
 			<include>BreadcrumbsLabel</include>
-			<visible>![Container.Content()]</visible>
-			<visible>![Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRTimers.xml) | Window.IsActive(MyPVRRecordings.xml) | Window.IsActive(MyPVRSearch.xml) | Window.IsActive(MyVideoNav.xml)]</visible>
+			<visible>! [Container.Content()]</visible>
+			<visible>! [Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRTimers.xml) | Window.IsActive(MyPVRRecordings.xml) | Window.IsActive(MyPVRSearch.xml) | Window.IsActive(MyVideoNav.xml)]</visible>
 		</control>
 		<control type="label">
 			<label> [B]»[/B] [COLOR unfocused_text]$INFO[Container.PluginCategory][/COLOR]</label>
@@ -1260,11 +1260,11 @@
 			<!-- <visible>
 				!Skin.HasSetting(Enable.BackgroundBlur) + 
 				[
-						[![Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56) | Control.IsVisible(500) | Control.IsVisible(501)] | Control.IsVisible(400)] | 
+						[ ! [Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56) | Control.IsVisible(500) | Control.IsVisible(501)] | Control.IsVisible(400)] | 
 						[
-								[[Control.IsVisible(50) + 
-									![Window.IsVisible(tvchannels) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimers) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvsearch)] + 
-									![
+								[ [Control.IsVisible(50) + 
+									! [Window.IsVisible(tvchannels) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimers) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvsearch)] + 
+									! [
 										[Container.Content(movies) + String.IsEqual(Skin.String(ListArtworkChoice.movies),2)] | 
 										[Container.Content(tvshows) + String.IsEqual(Skin.String(ListArtworkChoice.tvshows),2)] | 
 										[Container.Content(seasons) + String.IsEqual(Skin.String(ListArtworkChoice.seasons),2)] | 
@@ -1276,18 +1276,18 @@
 									]
 								] | Control.IsVisible(500) | Control.IsVisible(501) | 
 								 Window.IsVisible(1100) | 
-								 [[Window.IsVisible(Home) | Window.IsVisible(1121) | !$EXP[isContent]] + 
+								 [ [Window.IsVisible(Home) | Window.IsVisible(1121) | !$EXP[isContent] ] + 
 										[String.IsEqual(Skin.String(HomeArtworkChoice),1)]
 								 ] |
-								 [[Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)] + 
-										[[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
+								 [ [Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)] + 
+										[ [Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
 										 [Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | 
 										 [Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | 
 										 [Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)]
 										]
 								 ] |
-								 [!Window.IsVisible(Home) + !Window.IsVisible(1121) + 
-										[[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
+								 [ !Window.IsVisible(Home) + !Window.IsVisible(1121) + 
+										[ [Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
 										 [Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | 
 										 [Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | 
 										 [Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)]
@@ -1301,8 +1301,8 @@
 					!Skin.HasSetting(Enable.BackgroundBlur) + 
 					[
 						[Control.IsVisible(50) + 
-							![Window.IsVisible(tvchannels) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimers) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvsearch)] + 
-							![
+							! [Window.IsVisible(tvchannels) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimers) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvsearch)] + 
+							! [
 								[Container.Content(movies) + String.IsEqual(Skin.String(ListArtworkChoice.movies),2)] | 
 								[Container.Content(tvshows) + String.IsEqual(Skin.String(ListArtworkChoice.tvshows),2)] | 
 								[Container.Content(seasons) + String.IsEqual(Skin.String(ListArtworkChoice.seasons),2)] | 
@@ -1313,24 +1313,24 @@
 								[Container.Content() + String.IsEqual(Skin.String(ListArtworkChoice.),2)]
 								]
 							] |
-							[!Control.IsVisible(50) + 
+							[ !Control.IsVisible(50) + 
 								[
 									Control.IsVisible(400) |
 									Control.IsVisible(500) | 
 									Control.IsVisible(501) | 
 									Window.IsVisible(1100) | 
-									[[Window.IsVisible(Home) | Window.IsVisible(1121) | !$EXP[isContent]] + 
+									[ [Window.IsVisible(Home) | Window.IsVisible(1121) | !$EXP[isContent] ] + 
 										[String.IsEqual(Skin.String(HomeArtworkChoice),1)]
 									] |
-									[[Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)] + 
-										[[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
+									[ [Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)] + 
+										[ [Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
 										[Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | 
 										[Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | 
 										[Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)]
 										]
 									] |
-									[!Window.IsVisible(Home) + !Window.IsVisible(1121) + 
-										[[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
+									[ !Window.IsVisible(Home) + !Window.IsVisible(1121) + 
+										[ [Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
 										[Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | 
 										[Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | 
 										[Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)]
@@ -1338,7 +1338,7 @@
 									]
 								]
 							] |
-							[!Control.IsVisible(50) + !Control.IsVisible(54) + !Control.IsVisible(55) + !Control.IsVisible(56) + 
+							[ !Control.IsVisible(50) + !Control.IsVisible(54) + !Control.IsVisible(55) + !Control.IsVisible(56) + 
 							!Window.IsVisible(Home) + !Window.IsVisible(1121) + !$EXP[isContent] | Control.IsVisible(51)]
 					]
 			</visible>
@@ -1356,7 +1356,7 @@
             String.IsEmpty(Listitem.Art(fanart)) + 
             String.IsEmpty(Window(home).Property(nimbus_fanart_art)) + 
             !ControlGroup(15000).HasFocus + 
-            ![String.IsEqual(Skin.String(HomeArtworkChoice),1)]
+            ! [String.IsEqual(Skin.String(HomeArtworkChoice),1)]
         ]
 			</visible>
 				<include>NetflixScreenDimensions</include>
@@ -1468,7 +1468,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>![Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Window.IsVisible(tvchannels) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimers) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvsearch)]</visible>
+					<visible>! [Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Window.IsVisible(tvchannels) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimers) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvsearch)]</visible>
 					<control type="videowindow">
 						<depth>DepthBackground</depth>
 						<include>FullScreenDimensions</include>
@@ -1494,7 +1494,7 @@
 					<include>ColoredBackgroundImages</include>
 				</control>
 				<!-- <control type="group" id="31111">
-					<visible>[Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)] + [![Player.HasVideo | [Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)]] | !String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))]</visible>
+					<visible>[Window.IsVisible(Home) | Window.IsVisible(1121) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(50) | Control.IsVisible(56)] + [ ! [Player.HasVideo | [Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)] ] | !String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))]</visible>
 					<depth>DepthBackground</depth>
 					<animation effect="fade" start="0" end="100" time="500">WindowOpen</animation>
 					<animation effect="fade" start="100" end="0" time="500">WindowClose</animation>
@@ -1536,7 +1536,7 @@
 				<depth>DepthBars</depth>
 				<animation effect="fade" start="100" end="0" time="300" condition="Window.Next(visualisation) | Window.Next(screencalibration)">WindowClose</animation>
 				<animation effect="fade" start="0" end="100" time="300" condition="Window.Previous(fullscreenvideo) | Window.Previous(startup) | Window.Previous(visualisation)">WindowOpen</animation>
-				<visible>![Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(500) | Control.IsVisible(501)]</visible>
+				<visible>! [Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(500) | Control.IsVisible(501)]</visible>
 				<bottom>0</bottom>
 				<control type="image">
 					<left>0</left>
@@ -2024,7 +2024,7 @@
     <control type="button">
 			<visible>false</visible>
 			<onfocus condition="String.IsEqual(Skin.String(trailerSetting),2) + [Window.IsVisible(Home) | Window.IsVisible(1121)] + !Player.HasMedia + String.IsEmpty(Skin.String(TrailerPlaying))">Skin.TimerStart(autoplay_trailer_timer)</onfocus>
-			<onfocus condition="String.IsEqual(Skin.String(trailerSetting),2) + ![Window.IsVisible(Home) | Window.IsVisible(1121)]">Skin.TimerStart(autoplay_trailer_timer)</onfocus>
+			<onfocus condition="String.IsEqual(Skin.String(trailerSetting),2) + ! [Window.IsVisible(Home) | Window.IsVisible(1121)]">Skin.TimerStart(autoplay_trailer_timer)</onfocus>
 			<onunfocus condition="Player.HasMedia + !String.IsEmpty(Skin.String(TrailerPlaying))">Stop</onunfocus>
 			<onunfocus condition="!String.IsEmpty(Skin.String(TrailerPlaying))">Skin.Reset(TrailerPlaying)</onunfocus>
     </control>

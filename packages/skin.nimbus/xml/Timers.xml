@@ -18,8 +18,8 @@
         <description>Timer to automatically return to Flix/FlixScape view</description>
         <start reset="true">Control.HasFocus($PARAM[list_id])</start>
         <stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(wall_scroll_timer),Skin.Numeric(RevertFromWallDelay))</stop>
-        <onstop condition="Control.IsVisible(500) + ![Control.HasFocus(532) | ControlGroup(9000).HasFocus]">Container.SetViewMode(54)</onstop>
-        <onstop condition="Control.IsVisible(501) + ![Control.HasFocus(532) | ControlGroup(9000).HasFocus]">Container.SetViewMode(55)</onstop>
+        <onstop condition="Control.IsVisible(500) + ! [Control.HasFocus(532) | ControlGroup(9000).HasFocus]">Container.SetViewMode(54)</onstop>
+        <onstop condition="Control.IsVisible(501) + ! [Control.HasFocus(532) | ControlGroup(9000).HasFocus]">Container.SetViewMode(55)</onstop>
         <!-- <onstart>Notification(skintimer, Wall scroll timer started, 1000)</onstart>
         <onstop>Notification(skintimer, Wall scroll timer stopped, 1000)</onstop> -->
     </timer>

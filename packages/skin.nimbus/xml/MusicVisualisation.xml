@@ -33,7 +33,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>!Visualisation.Enabled + [[String.IsEmpty(Player.Art(fanart)) + String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))] | Skin.HasSetting(hide_background_fanart)]</visible>
+			<visible>!Visualisation.Enabled + [ [String.IsEmpty(Player.Art(fanart)) + String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))] | Skin.HasSetting(hide_background_fanart)]</visible>
 			<include>ColoredBackgroundImages</include>
 		</control>
 		<control type="group">
@@ -62,7 +62,7 @@
 				<bordersize>4</bordersize>
 			</control>
 			<control type="group">
-				<visible>[Player.ShowInfo | Window.IsActive(musicosd)] + ![Window.IsActive(playerprocessinfo) | MusicPlayer.Content(livetv)]</visible>
+				<visible>[Player.ShowInfo | Window.IsActive(musicosd)] + ! [Window.IsActive(playerprocessinfo) | MusicPlayer.Content(livetv)]</visible>
 				<include>Visible_Left</include>
 				<left>440</left>
 				<top>10</top>
