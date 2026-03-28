@@ -684,6 +684,8 @@
 						<top>-565</top>
 						<right>0</right>
 						<bottom>0</bottom>
+						<onclick condition="String.StartsWith(ListItem.FolderPath,plugin://)">RunPlugin($INFO[ListItem.FolderPath])</onclick>
+						<onclick condition="!String.StartsWith(ListItem.FolderPath,plugin://)">PlayMedia($INFO[ListItem.FolderPath])</onclick>
 						<onback>9000</onback>
 						<onleft>9000</onleft>
 						<onright>14100</onright>
