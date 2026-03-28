@@ -3,9 +3,10 @@
 # Configuration
 REPO_DIR="repo"
 PACKAGES_DIR="packages"
-TEXTURE_PACKER="./TexturePacker"
 
+echo "============================================="
 echo "Building Kodi Repository Distribution..."
+echo "============================================="
 
 # Ensure repo directory exists
 mkdir -p "$REPO_DIR"
@@ -24,81 +25,109 @@ gen_md5() {
     fi
 }
 
+# Pre-clean junk files from packages directory
+echo "Cleaning junk files from packages..."
+find "$PACKAGES_DIR" -name ".DS_Store" -delete 2>/dev/null
+find "$PACKAGES_DIR" -name "*.pyc" -delete 2>/dev/null
+find "$PACKAGES_DIR" -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null
+find "$PACKAGES_DIR" -name "Thumbs.db" -delete 2>/dev/null
+find "$PACKAGES_DIR" -name "._.DS_Store" -delete 2>/dev/null
+find "$PACKAGES_DIR" -name "._*" -delete 2>/dev/null
+
 # Iterate through all addons in the packages directory
 for addon_path in "$PACKAGES_DIR"/*/; do
     [ -e "$addon_path" ] || continue
     addon_id=$(basename "$addon_path")
     addon_xml="$addon_path/addon.xml"
-    
+
     if [ ! -f "$addon_xml" ]; then
         echo "Skipping $addon_id: No addon.xml found."
         continue
     fi
-    
+
     version=$(sed -n 's/.*<addon.*version="\([^"]*\)".*/\1/p' "$addon_xml" | head -1)
+    echo ""
     echo "Processing $addon_id version $version..."
-    
+
     # Create addon-specific folder in repo and CLEAN OLD VERSIONS
     out_dir="$REPO_DIR/$addon_id"
     mkdir -p "$out_dir"
     echo "  - Cleaning old versions in $out_dir..."
     rm -f "$out_dir"/*.zip "$out_dir"/*.zip.md5
-    
-    # TexturePacker optimization for skin.nimbus
+
+    zip_name="${addon_id}-${version}.zip"
+    zip_path="$(mkdir -p "$out_dir" && cd "$out_dir" && pwd)/$zip_name"
+
+    # Standard junk-file exclusion list
+    EXCLUDES=(-x "*.git*" -x "*.DS_Store" -x "._*" -x "Thumbs.db" -x "*.pyc" -x "*/__pycache__/*" -x "tmp_package/*" -x "repo/*" -x "media_temp/*")
+
+    echo "  - Packaging $zip_name..."
+
     if [ "$addon_id" == "skin.nimbus" ]; then
-        echo "  - Optimizing textures for skin.nimbus..."
+        # -------------------------------------------------
+        # SKIN PACKAGING: Use -0 (store-only, no compression)
+        # Images/fonts/XBT are already compressed formats.
+        # Store-only = fastest extraction on low-end devices.
+        # -------------------------------------------------
+        SKIN_EXCLUDES=("${EXCLUDES[@]}" -x "$addon_id/media_temp/*")
+
+        # Try TexturePacker if Docker is available
         MEDIA_DIR="$addon_path/media"
         TEMP_MEDIA_DIR="media_temp"
-        
-        if [ -d "$MEDIA_DIR" ]; then
-            # Clean up previous attempts
-            rm -rf "$TEMP_MEDIA_DIR"
-            mkdir -p "$TEMP_MEDIA_DIR"
-            
-            # Move all media files to temp to pack them
-            # Use cp then rm to avoid move issues across docker mounts if needed, 
-            # but here it's all local.
-            cp -r "$MEDIA_DIR"/* "$TEMP_MEDIA_DIR/" 2>/dev/null
-            rm -f "$MEDIA_DIR"/* 2>/dev/null
-            
-            # Pack textures into Textures.xbt using Docker (for ARM64 compatibility)
-            echo "    - Packing textures into Textures.xbt using Docker..."
-            docker run --rm -v "$(pwd):/work" -w /work debian:sid sh -c "apt-get update && apt-get install -y kodi-tools-texturepacker > /dev/null && kodi-TexturePacker -input /work/$TEMP_MEDIA_DIR/ -output /work/$MEDIA_DIR/Textures.xbt -dupecheck" > /dev/null 2>&1
-            
-            if [ -f "$MEDIA_DIR/Textures.xbt" ]; then
-                echo "    - Successfully created Textures.xbt"
-            else
-                echo "    - ERROR: Failed to create Textures.xbt"
-                # Restore files if failed
-                cp -r "$TEMP_MEDIA_DIR"/* "$MEDIA_DIR/" 2>/dev/null
+        TEXTURES_PACKED=false
+
+        if command -v docker &>/dev/null && docker info &>/dev/null 2>&1; then
+            if [ -d "$MEDIA_DIR" ] && [ "$(ls -A "$MEDIA_DIR" 2>/dev/null | grep -v Textures.xbt)" ]; then
+                echo "  - Optimizing textures via Docker TexturePacker..."
+                rm -rf "$TEMP_MEDIA_DIR"
+                mkdir -p "$TEMP_MEDIA_DIR"
+                cp -r "$MEDIA_DIR"/* "$TEMP_MEDIA_DIR/" 2>/dev/null
+                rm -f "$MEDIA_DIR"/* 2>/dev/null
+
+                docker run --rm -v "$(pwd):/work" -w /work debian:sid sh -c \
+                    "apt-get update && apt-get install -y kodi-tools-texturepacker > /dev/null && kodi-TexturePacker -input /work/$TEMP_MEDIA_DIR/ -output /work/$MEDIA_DIR/Textures.xbt -dupecheck" > /dev/null 2>&1
+
+                if [ -f "$MEDIA_DIR/Textures.xbt" ]; then
+                    echo "    - Successfully created Textures.xbt"
+                    TEXTURES_PACKED=true
+                else
+                    echo "    - TexturePacker failed, packaging raw media files instead"
+                    cp -r "$TEMP_MEDIA_DIR"/* "$MEDIA_DIR/" 2>/dev/null
+                fi
             fi
+        else
+            echo "  - Docker not available, packaging raw media files (no TexturePacker)"
         fi
-    fi
-    
-    zip_name="${addon_id}-${version}.zip"
-    # Get absolute path for ZIP to avoid issues with cd in subshell
-    zip_path="$(mkdir -p "$out_dir" && cd "$out_dir" && pwd)/$zip_name"
-    
-    # Step 1: Package the addon
-    echo "  - Packaging $zip_name..."
-    # If it's the skin, exclude the individual media files from the ZIP
-    if [ "$addon_id" == "skin.nimbus" ]; then
-        # Use -0 (store only) for faster installation on the TV
-        (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" -x "*.git*" -x "*.DS_Store" -x "tmp_package/*" -x "repo/*" -x "$addon_id/media/*" -x "$addon_id/media_temp/*")
-        # Add the Textures.xbt manually to ensure it's included
-        (cd "$PACKAGES_DIR" && zip -0g "$zip_path" "$addon_id/media/Textures.xbt")
-        
-        # Restore media files back to the original folder
-        mv "$TEMP_MEDIA_DIR"/* "$MEDIA_DIR/" 2>/dev/null
-        rm -rf "$TEMP_MEDIA_DIR"
+
+        if [ "$TEXTURES_PACKED" = true ]; then
+            # Exclude raw media, include only Textures.xbt
+            (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" "${SKIN_EXCLUDES[@]}" -x "$addon_id/media/*")
+            (cd "$PACKAGES_DIR" && zip -0g "$zip_path" "$addon_id/media/Textures.xbt")
+            # Restore raw media
+            mv "$TEMP_MEDIA_DIR"/* "$MEDIA_DIR/" 2>/dev/null
+            rm -rf "$TEMP_MEDIA_DIR"
+        else
+            # Package with raw media, still using -0 for speed
+            (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" "${SKIN_EXCLUDES[@]}")
+        fi
     else
-        (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" -x "*.git*" -x "*.DS_Store" -x "tmp_package/*" -x "repo/*")
+        # Non-skin addons: -0 store-only as well (Python scripts compress minimally)
+        (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" "${EXCLUDES[@]}")
     fi
-    
-    # Step 2: Generate MD5 for ZIP
+
+    # Verify zip was created
+    if [ -f "$zip_path" ]; then
+        zip_size=$(du -h "$zip_path" | cut -f1)
+        echo "  - Created: $zip_name ($zip_size)"
+    else
+        echo "  - ERROR: Failed to create $zip_name"
+        continue
+    fi
+
+    # Generate MD5 for ZIP
     gen_md5 "$zip_path"
-    
-    # Step 3: Append metadata to addons.xml (removing declarations)
+
+    # Append metadata to addons.xml (removing declarations)
     sed 's/<?xml.*?>//g' "$addon_xml" >> "$REPO_DIR/addons.xml"
     echo "" >> "$REPO_DIR/addons.xml"
 done
@@ -107,7 +136,9 @@ done
 echo '</addons>' >> "$REPO_DIR/addons.xml"
 gen_md5 "$REPO_DIR/addons.xml"
 
-echo "--------------------------------------------------"
-echo "Success! All addons packaged in the '$REPO_DIR/' directory."
-echo "Now commit and push the '$REPO_DIR/' and '$PACKAGES_DIR/' folders to GitHub."
-echo "--------------------------------------------------"
+echo ""
+echo "============================================="
+echo "Build Complete!"
+echo "Addons packaged in '$REPO_DIR/':"
+ls -lh "$REPO_DIR"/*/*.zip 2>/dev/null
+echo "============================================="

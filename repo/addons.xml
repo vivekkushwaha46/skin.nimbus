@@ -26,7 +26,7 @@
 </addon>
 
 
-<addon id="skin.nimbus" version="2.0.1" name="Nimbus"
+<addon id="skin.nimbus" version="2.0.3" name="Nimbus"
 	provider-name="Ivar Brandt">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
