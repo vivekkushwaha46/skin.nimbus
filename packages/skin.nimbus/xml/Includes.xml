@@ -435,7 +435,7 @@
 		</definition>
 	</include> -->
 
-	<!-- <include name="MediaFlags">
+	<include name="MediaFlags">
 		<param name="infolabel_prefix"></param>
 		<param name="resolution_var">$VAR[ResolutionFlagVar]</param>
 		<definition>
@@ -484,7 +484,7 @@
 				</include>
 			</control>
 		</definition>
-	</include> -->
+	</include>
 
 	<include name="WeatherIconMyWeather">
 		<control type="group">

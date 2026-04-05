@@ -155,6 +155,7 @@
 
 	<!-- GlowPulse removed: continuous pulse animation is expensive on low-end GPUs -->
 	<include name="GlowPulse">
+		<animation type="Conditional" condition="false"><effect type="fade" time="0"/></animation>
 	</include>
 	
 	<include name="Animation_Widget_Poster_Slide">

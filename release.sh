@@ -65,9 +65,10 @@ for addon_path in "$PACKAGES_DIR"/*/; do
 
     if [ "$addon_id" == "skin.nimbus" ]; then
         # -------------------------------------------------
-        # SKIN PACKAGING: Use -0 (store-only, no compression)
-        # Images/fonts/XBT are already compressed formats.
-        # Store-only = fastest extraction on low-end devices.
+        # SKIN PACKAGING: Use normal compression (-9 max)
+        # The -0 flag creates huge uncompressed zips that cause
+        # Kodi to make hundreds of HTTP range-requests on remote
+        # install, leading to hangs/crashes on GitHub Pages.
         # -------------------------------------------------
         SKIN_EXCLUDES=("${EXCLUDES[@]}" -x "$addon_id/media_temp/*")
 
@@ -101,18 +102,18 @@ for addon_path in "$PACKAGES_DIR"/*/; do
 
         if [ "$TEXTURES_PACKED" = true ]; then
             # Exclude raw media, include only Textures.xbt
-            (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" "${SKIN_EXCLUDES[@]}" -x "$addon_id/media/*")
-            (cd "$PACKAGES_DIR" && zip -0g "$zip_path" "$addon_id/media/Textures.xbt")
+            (cd "$PACKAGES_DIR" && zip -9r "$zip_path" "$addon_id" "${SKIN_EXCLUDES[@]}" -x "$addon_id/media/*")
+            (cd "$PACKAGES_DIR" && zip -9g "$zip_path" "$addon_id/media/Textures.xbt")
             # Restore raw media
             mv "$TEMP_MEDIA_DIR"/* "$MEDIA_DIR/" 2>/dev/null
             rm -rf "$TEMP_MEDIA_DIR"
         else
-            # Package with raw media, still using -0 for speed
-            (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" "${SKIN_EXCLUDES[@]}")
+            # Package with raw media, using -9 for max compression (critical for HTTP installs)
+            (cd "$PACKAGES_DIR" && zip -9r "$zip_path" "$addon_id" "${SKIN_EXCLUDES[@]}")
         fi
     else
-        # Non-skin addons: -0 store-only as well (Python scripts compress minimally)
-        (cd "$PACKAGES_DIR" && zip -0r "$zip_path" "$addon_id" "${EXCLUDES[@]}")
+        # Non-skin addons: use -9 for max compression (critical for HTTP installs)
+        (cd "$PACKAGES_DIR" && zip -9r "$zip_path" "$addon_id" "${EXCLUDES[@]}")
     fi
 
     # Verify zip was created

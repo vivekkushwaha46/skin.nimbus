@@ -486,7 +486,7 @@
             <itemgap>12</itemgap>
             <aligny>center</aligny>
             <align>center</align>
-            <visible>!Window.IsVisible(dialogbusy) + !String.IsEmpty(ListItem.Genre)</visible>
+            <visible>!Window.IsVisible(10138) + !String.IsEmpty(ListItem.Genre)</visible>
             <include content="FlixInfoIcon">
               <param name="flixlabel" value="$INFO[Container($PARAM[id]).ListItem.Premiered]"/>
               <param name="visible" value="!String.IsEmpty(Container($PARAM[id]).ListItem.Premiered) + !ListItem.IsCollection"/>

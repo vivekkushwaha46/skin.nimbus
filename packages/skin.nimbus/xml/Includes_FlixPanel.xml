@@ -77,7 +77,7 @@
 						<itemgap>12</itemgap>
 						<aligny>center</aligny>
 						<align>left</align>
-						<visible>! [Window.IsVisible(dialogbusy) | Player.HasMedia] + String.IsEmpty(Skin.String(TrailerPlaying)) + !String.IsEmpty(ListItem.Genre)</visible>
+						<visible>! [Window.IsVisible(10138) | Player.HasMedia] + String.IsEmpty(Skin.String(TrailerPlaying)) + !String.IsEmpty(ListItem.Genre)</visible>
 						<!-- <include content="FlixInfoIcon">
 							<param name="flixlabel" value="$INFO[Container($PARAM[id]).ListItem.Premiered]"/>
 							<param name="visible" value="!String.IsEmpty(Container($PARAM[id]).ListItem.Premiered) + !ListItem.IsCollection"/>

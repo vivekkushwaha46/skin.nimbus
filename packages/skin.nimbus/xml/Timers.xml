@@ -16,7 +16,7 @@
     <timer>
         <name>wall_scroll_timer</name>
         <description>Timer to automatically return to Flix/FlixScape view</description>
-        <start reset="true">Control.HasFocus($PARAM[list_id])</start>
+        <start reset="true">!System.IdleTime(0)</start>
         <stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(wall_scroll_timer),Skin.Numeric(RevertFromWallDelay))</stop>
         <onstop condition="Control.IsVisible(500) + ! [Control.HasFocus(532) | ControlGroup(9000).HasFocus]">Container.SetViewMode(54)</onstop>
         <onstop condition="Control.IsVisible(501) + ! [Control.HasFocus(532) | ControlGroup(9000).HasFocus]">Container.SetViewMode(55)</onstop>
@@ -26,14 +26,14 @@
     <timer>
         <name>posterflow_scroll_timer</name>
         <description>Timer to automatically display information on PosterFlow view after scrolling</description>
-        <start reset="true">Control.HasFocus($PARAM[list_id])</start>
+        <start reset="true">!System.IdleTime(0)</start>
         <stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(posterflow_scroll_timer),Skin.Numeric(PosterFlowAutoInfoDelay))</stop>
         <!-- <onstart>Notification(postertimer, Poster scroll timer started, 1000)</onstart>
         <onstop>Notification(postertimer, Poster scroll timer stopped, 1000)</onstop> -->
     </timer>
     <timer>
         <name>autolock_view_timer</name>
-        <start reset="true">Control.HasFocus($PARAM[list_id])</start>
+        <start reset="true">!System.IdleTime(0)</start>
         <stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autolock_view_timer),1)</stop>
         <onstop condition="Container.Content(episodes) + !String.StartsWith(Container.PluginCategory,Season)">Skin.SetString(Skin.ForcedView.episodes.outside,$INFO[Container.Viewmode])</onstop>
         <onstop condition="Container.Content(episodes) + String.StartsWith(Container.PluginCategory,Season)">Skin.SetString(Skin.ForcedView.episodes.inside,$INFO[Container.Viewmode])</onstop>
@@ -54,7 +54,7 @@
     <timer>
         <name>autoplay_trailer_timer</name>
         <description>Timer to autoplay trailers</description>
-        <start reset="true">Control.HasFocus($PARAM[list_id])</start>
+        <start reset="true">!System.IdleTime(0)</start>
         <stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoplay_trailer_timer),Skin.Numeric(TrailerDelaySecs))</stop>
         <onstop condition="!String.IsEmpty(ListItem.IMDBNumber) + String.StartsWith(ListItem.IMDBNumber,tt) + [ControlGroup(2000).HasFocus | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(56)]">Skin.SetString(TrailerPlaying, true)</onstop>
         <onstop condition="!String.IsEmpty(ListItem.IMDBNumber) + String.StartsWith(ListItem.IMDBNumber,tt) + [ControlGroup(2000).HasFocus | Control.HasFocus(50) | Control.HasFocus(51) | Control.HasFocus(54) | Control.HasFocus(55) | Control.HasFocus(56)]">$VAR[AutoplayTrailerSource]</onstop>
