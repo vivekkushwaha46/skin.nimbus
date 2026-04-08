@@ -36,6 +36,8 @@ class Service(xbmc.Monitor):
 
             self.ratings_monitor.process_current_item()
             self.waitForAbort(0.2)
+        self.image_monitor.stop()
+        self.image_monitor.join(timeout=2)
 
     def _should_pause(self):
         """Determine if service should pause."""

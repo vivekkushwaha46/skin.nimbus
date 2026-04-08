@@ -38,7 +38,7 @@ class ImageMonitor(threading.Thread):
     def run(self) -> None:
         """Main monitoring loop."""
         monitor = xbmc.Monitor()
-        while not self._stop_event.is_set():
+        while not self._stop_event.is_set() and not monitor.abortRequested():
             try:
                 if self._is_paused():
                     xbmc.Monitor().waitForAbort(2)
