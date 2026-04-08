@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <addons>
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.nimbus" version="2.2.0" name="Nimbus"
+<addon id="skin.nimbus" version="2.3.0" name="Nimbus"
 	provider-name="Ivar Brandt">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
