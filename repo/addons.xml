@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
 
-<addon id="script.nimbus.helper" name="Nimbus Helper" version="2.0.0" provider-name="Ivar Brandt">
+<addon id="script.nimbus.helper" name="Nimbus Helper" version="2.0.2" provider-name="Ivar Brandt">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.requests" version="2.19.1"/>
@@ -26,7 +26,7 @@
 </addon>
 
 
-<addon id="skin.nimbus" version="2.0.6" name="Nimbus"
+<addon id="skin.nimbus" version="2.3.1" name="Nimbus"
 	provider-name="Ivar Brandt">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />

@@ -461,7 +461,7 @@
 		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart))">$INFO[Container.ListItem.Art(fanart)]</value>
 	</variable> -->
 	<variable name="ListWatchedIconVar">
-    <value condition="String.IsEqual(Container.PluginName,plugin.video.fenlight)">$VAR[ListWatchedIconVar.Other]</value>
+    <value condition="String.IsEqual(Container.PluginName,plugin.video.fenlight.am)">$VAR[ListWatchedIconVar.Other]</value>
     <value>$VAR[ListWatchedIconVar.All]</value>
 	</variable>
 
@@ -502,7 +502,7 @@
 		<value condition="Integer.IsGreater(ListItem.Playcount,0)">OverlayWatched.png</value>
 	</variable> -->
 	<variable name="WallWatchedIconVar">
-    <value condition="String.IsEqual(Container.PluginName,plugin.video.fenlight) | String.StartsWith(ListItem.Path,plugin://plugin.video.fenlight)">$VAR[WallWatchedIconVar.Other]</value>
+    <value condition="String.IsEqual(Container.PluginName,plugin.video.fenlight.am) | String.StartsWith(ListItem.Path,plugin://plugin.video.fenlight.am)">$VAR[WallWatchedIconVar.Other]</value>
     <value>$VAR[WallWatchedIconVar.All]</value>
 	</variable>	
 	<variable name="WallWatchedIconVar.All">
